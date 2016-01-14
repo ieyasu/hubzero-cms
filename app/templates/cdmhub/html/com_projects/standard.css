@@ -1,0 +1,14 @@
+@import url("/core/components/com_projects/site/assets/css/standard.css");
+
+.com_projects #member_options li {
+	position: relative;
+}
+
+.com_projects #member_options #options-dock {
+	bottom: auto;
+	margin-top: 0;
+}
+
+.com_projects #member_options li:hover #options-dock {
+	top: 100%;
+}

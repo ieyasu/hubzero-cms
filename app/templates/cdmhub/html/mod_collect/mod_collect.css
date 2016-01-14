@@ -1,0 +1,75 @@
+/**
+ * @package     hubzero-cms
+ * @file        plugins/content/collect/collect.css
+ * @copyright   Copyright 2005-2014 Purdue University. All rights reserved.
+ * @license     http://www.gnu.org/licenses/lgpl-3.0.html LGPLv3
+ */
+
+/*
+
+	-- -- -- -- -- -- --
+	Collect CSS
+	-- -- -- -- -- -- --
+
+*/
+
+	.collector {
+		position: absolute;
+		top: 5em;
+		right: 28em;
+		padding: 0;
+		margin: 0;
+	}
+	.collector .btn {
+		color: #fff;
+		text-shadow: none;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		-ms-border-radius: 0;
+		-m-border-radius: 0;
+		border-radius: 0;
+		border: none;
+		background: #333;
+		background: rgba(0, 0, 0, 0.15);
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		-ms-box-shadow: none;
+		-m-box-shadow: none;
+		box-shadow: none;
+	}
+	.collector .icon-collect:before {
+		content: "\f005";
+		font-family: "Fontcons";
+		color: #ccc;
+	}
+
+/* Form */
+	#sbox-content #hubForm.full fieldset {
+		margin: 0;
+		width: auto;
+	}
+	#sbox-content.fancybox-inner {
+		border: none;
+	}
+	#sbox-content #hubForm .grid {
+		margin: 0;
+		position: relative;
+		border-bottom: 1px solid #ccc;
+	}
+	#sbox-content #hubForm .grid label {
+		border-bottom: none;
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	#sbox-content #hubForm .grid .or {
+		position: absolute;
+		bottom: 2em;
+		left: 50%;
+		margin-left: -0.75em;
+	}
+	#sbox-content .in-collections ul {
+		list-style: none;
+	}
+	#sbox-content .in-collections li {
+		margin: 0.2em 0;
+	}

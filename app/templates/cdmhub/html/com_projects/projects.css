@@ -1,0 +1,72 @@
+@import url("/core/components/com_projects/site/assets/css/projects.css");
+
+
+/* Introduction */
+	body #introduction div#introbody {
+		background: url("images/intro.png") top right no-repeat !important;
+	}
+	body #introduction {
+		padding: 0 0 0 140px;
+	}
+
+/* Features */
+	.feature p.ima {
+		padding: 2em;
+	}
+	.feature p.ima:before {
+		margin-top: -0.2em;
+	}
+
+/* Menu and lists */
+	ul.projecttools li {
+		min-height: 40px;
+	}
+	.list-editing, .list-menu {
+		min-height: 40px;
+	}
+	.com_projects .view-options li {
+		width: 25px;
+		height: 25px;
+	}
+
+/* Setup */
+	.com_projects .withleft .aside:before,
+	.com_projects .aside:before,
+	.com_projects .withleft .aside:after,
+	.com_projects .aside:after,
+	.com_projects .withleft .subject:before,
+	.com_projects #hubForm:after,
+	.com_projects #hubForm:before,
+	#hubForm fieldset:after,
+	#hubForm legend:after {
+		display: none;
+	}
+	#hubForm fieldset.oldstyle, #hubForm fieldset {
+		width: 70%;
+	}
+	#hubForm .wider h2, #hubForm fieldset.oldstyle h2, #hubForm fieldset h2, #hubForm .wider h4 {
+		margin-left: 0;
+		padding-left: 0 !important;
+	}
+	#hubForm .explaination {
+		width: 25%;
+	}
+	#setup .or_separator {
+		margin: 2em 1em;
+	}
+	#setup #team-save {
+		line-height: 0.8em;
+		padding: 0.5em 0.5em;
+		display: block;
+		position: relative;
+		top: 1.5em;
+	}
+	.and_or {
+		margin-left: 1em;
+	}
+ /* Misc */
+
+.com_projects table {
+	position: relative;
+	clear: none;
+}

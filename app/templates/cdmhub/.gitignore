@@ -1,0 +1,5 @@
+# System stuff for Apple
+.DS_Store
+
+# Project File for SubLime
+.sublime-project
