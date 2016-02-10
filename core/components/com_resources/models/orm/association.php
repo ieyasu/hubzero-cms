@@ -25,43 +25,71 @@
  * HUBzero is a registered trademark of Purdue University.
  *
  * @package   hubzero-cms
+ * @author	Kevin Wojkovich <kevinw@purdue.edu>
  * @copyright Copyright 2005-2015 HUBzero Foundation, LLC.
  * @license   http://opensource.org/licenses/MIT MIT
+ * @since	 Class available since release 1.3.2
  */
 
-// No direct access
-defined('_HZEXEC_') or die();
-?>
+namespace Components\Resources\Models\Orm;
 
-<div class="admin-header">
-	<a class="icon-add button push-module" href="<?php echo Route::url('index.php?option=com_members&controller=plugins&task=manage&plugin=dashboard&action=push'); ?>">
-		<?php echo Lang::txt('PLG_MEMBERS_DASHBOARD_PUSH_TITLE'); ?>
-	</a>
-	<a class="icon-add button add-module" href="<?php echo Route::url('index.php?option=com_members&controller=plugins&task=manage&plugin=dashboard&action=add'); ?>">
-		<?php echo Lang::txt('PLG_MEMBERS_DASHBOARD_ADD_MODULES'); ?>
-	</a>
-	<h3>
-		<?php echo Lang::txt('PLG_MEMBERS_DASHBOARD_MANAGE'); ?>
-	</h3>
-</div>
+use Hubzero\Database\Relational;
+use Hubzero\Utility\String;
+use Hubzero\Base\Object;
 
-<div class="member_dashboard">
+/**
+ * Hubs database model
+ *
+ * @uses \Hubzero\Database\Relational
+ */
+class Association extends Relational
+{
+	/**
+	 * The table namespace
+	 *
+	 * @var string
+	 **/
+	protected $namespace = 'resource';
 
-	<div class="modules customizable">
-		<?php
-			foreach ($this->modules as $module)
-			{
-				// create view object
-				$this->view('module', 'display')
-				     ->set('admin', $this->admin)
-				     ->set('module', $module)
-				     ->display();
-			}
-		?>
-	</div>
+	/**
+	 * The table name, non-standard naming 
+	 *
+	 * @var string
+	 **/
+	protected $table = '#__resource_assoc';
 
-	<div class="modules-empty">
-		<h3><?php echo Lang::txt('PLG_MEMBERS_DASHBOARD_ADMIN_EMPTY_TITLE'); ?></h3>
-		<p><?php echo Lang::txt('PLG_MEMBERS_DASHBOARD_ADMIN_EMPTY_DESC'); ?></p>
-	</div>
-</div>
+	/**
+	 * Default order by for model
+	 *
+	 * @var string
+	 **/
+	public $orderBy = 'id';
+
+	/**
+	 * Fields and their validation criteria
+	 *
+	 * @var array
+	 **/
+	protected $rules = array(
+		'title' => 'notempty'
+	);
+
+	/**
+	 * Automatically fillable fields
+	 *
+	 * @var array
+	 **/
+	public $always = array(
+	);
+
+	/**
+	 * Defines the inverse relationship between a record and a task
+	 *
+	 * @return \Hubzero\Database\Relationship\belongsToOne
+	 * @author
+	 **/
+	public function parent()
+	{
+		return $this->belongsToOne('Resource', 'parent_id', 'id');
+	}
+}
