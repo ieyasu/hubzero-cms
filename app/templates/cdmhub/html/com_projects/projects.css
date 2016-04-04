@@ -8,6 +8,10 @@
 	body #introduction {
 		padding: 0 0 0 140px;
 	}
+	body #introduction li:before {
+		position: static;
+		margin-top: 0;
+	}
 
 /* Features */
 	.feature p.ima {
