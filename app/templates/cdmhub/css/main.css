@@ -495,9 +495,21 @@ html.safari #splash .inner-wrap {
 	     -o-border-radius: 0px;
 	        border-radius: 0px;
 }
-#searchform input::-webkit-input-placeholder,
-#searchform input:-moz-placeholder,
-#searchform input::-moz-placeholder,
+#searchform input::-webkit-input-placeholder {
+        color: #EEE;
+        font-weight: bold;
+        font-size: 1.15em;
+}
+#searchform input:-moz-placeholder {
+        color: #EEE;
+        font-weight: bold;
+        font-size: 1.15em;
+}
+#searchform input::-moz-placeholder {
+        color: #EEE;
+        font-weight: bold;
+        font-size: 1.15em;
+}
 #searchform input:-ms-input-placeholder {
 	color: #EEE;
 	font-weight: bold;
