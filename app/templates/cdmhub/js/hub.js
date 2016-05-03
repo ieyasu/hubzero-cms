@@ -45,6 +45,18 @@ HUB.Base = {
 	initialize: function() {
 		var $ = this.jQuery, w = 760, h = 520;
 
+		var menu = $('#top'),
+			top = menu.offset().top;
+
+		// Stick the toolbar to the top of the screen when the browser has scrolled
+		$(window).on('scroll', function(event) {
+			// what the y position of the scroll is
+			var y = $(window).scrollTop();
+			// whether that's below the form
+			var t = (top - y);
+			menu.css('top', (t < 0 ? 0 : t) + 'px');
+		});
+
 		// Set focus on username field for login form
 		if ($('#username').length > 0) {
 			$('#username').focus();
