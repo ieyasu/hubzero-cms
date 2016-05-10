@@ -46,15 +46,23 @@ HUB.Base = {
 		var $ = this.jQuery, w = 760, h = 520;
 
 		var menu = $('#top'),
-			top = menu.offset().top;
+			topSpacerTop = $('#top-spacer').offset().top;
 
 		// Stick the toolbar to the top of the screen when the browser has scrolled
 		$(window).on('scroll', function(event) {
-			// what the y position of the scroll is
-			var y = $(window).scrollTop();
-			// whether that's below the form
-			var t = (top - y);
-			menu.css('top', (t < 0 ? 0 : t) + 'px');
+			if(topSpacerTop > 0) {
+				// what the y position of the scroll is
+				var y = $(window).scrollTop();
+				// whether that's below the form
+				var t = (topSpacerTop - y);
+				menu.css('top', (t < 0 ? 0 : t) + 'px');
+			}
+		});
+
+		// Update the spacer's top offset value and reposition the toolbar
+		$(window).on('resize', function(event) {
+			topSpacerTop = $('#top-spacer').offset().top;
+			$(this).scroll();
 		});
 
 		// Set focus on username field for login form
