@@ -1,0 +1,15 @@
+@import url('/core/components/com_groups/site/assets/css/media.css');
+
+.upload-filelist-toolbar .path {
+	margin: 0;
+}
+.filelist-headers ul {
+	margin: 0;
+}
+.filelist-headers ul li {
+	margin: 0;
+}
+.qq-upload-button,
+.qq-upload-drop-area {
+	min-height: 0.1em;
+}

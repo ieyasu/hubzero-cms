@@ -1,0 +1,19 @@
+@import url('/core/modules/mod_mytools/assets/css/mod_mytools.css');
+
+.sortable .tab_panel li.supported {
+	background: none;
+}
+
+.sortable .tab_titles {
+	height: 2rem;
+	background: #f0f0f0;
+}
+
+.sortable .tab_titles li {
+	height: auto;
+	line-height: 2rem;
+	font-weight: normal;
+	padding: 0;
+	background: none;
+	color: inherit;
+}

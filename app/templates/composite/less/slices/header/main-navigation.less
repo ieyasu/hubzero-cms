@@ -1,0 +1,248 @@
+// Main navigation menu mixins, layout and styles
+
+#main-nav {
+
+	// *******************************************************
+	// Base styles mixin
+	.base() {
+		nav.main {
+
+			ul.menu {
+
+				&>li {
+
+					&>a {
+						font-family: @fontNavigation;
+						text-transform: uppercase;
+						display: inline-block;
+						font-size: 0.8rem;
+
+						&:hover {
+							color: @colorAccent;
+						}
+
+						@media (min-width: @sizeL) {
+							font-size: 0.86rem;
+						}
+
+						@media (min-width: @sizeXL) {
+							font-size: 0.9rem;
+						}
+					}
+
+					// no home
+					&.item-4 {
+						display: none;
+					}
+				}
+
+				li {
+
+					ul {
+
+						li {
+
+							.separator {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// *******************************************************
+	// Mobile styles mixin
+	.mobile() {
+		nav.main {
+			position: relative;
+			z-index: 1;
+
+			ul {
+				list-style: none;
+				margin: 0;
+			}
+
+			ul.menu {
+				// Top level links
+				& > li > a {
+					position: relative;
+					display: inline-block;
+					margin-bottom: 20px;
+					font-family: @fontNavigation;
+
+					&:after {
+						.ab();
+						.transition();
+						height: 1px;
+						width: 100%;
+						background: @colorAccent;
+						left: 0;
+						bottom: -10px;
+					}
+				}
+
+				li {
+
+					ul {
+						margin-bottom: 30px;
+
+						li {
+							margin: 0.1em 0;
+
+							a {
+								display: inline-block;
+								position: relative;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// *******************************************************
+	// Display styles mixin
+	.display() {
+		nav.main {
+			padding: 0;
+
+			ul.menu,
+			ul.menu li,
+			ul.menu ul {
+				margin: 0;
+				padding: 0;
+			}
+
+			ul.menu {
+				position: relative;
+				display: inline-block;
+				z-index: 797;
+				padding: 0;
+
+				// top level links
+				& > li > a {
+					line-height: @logo-height;
+					padding-left: 0.5rem;
+					padding-right: 0.5rem;
+
+					&:after {
+						width: 0;
+						left: auto;
+						right: 0;
+						bottom: 5px;
+					}
+
+					&:hover {
+						&:after {
+							.translate(0, 0);
+							width: 100%;
+						}
+					}
+				}
+
+				li {
+					display: inline-block;
+					line-height: 1em;
+					vertical-align: middle;
+					zoom: 1;
+					position: relative;
+
+					&:hover,
+					&:focus {
+						z-index: 799;
+						cursor: default;
+					}
+
+					// Reveal the drop-down
+					&:hover > ul,
+					&:focus > ul {
+						visibility: visible;
+					}
+
+					a {
+						display: block;
+					}
+
+					// Drop-down
+
+					ul {
+						visibility: hidden;
+						position: absolute;
+						top: 100%;
+						right: 50%;
+						z-index: 798;
+						text-align: center;
+						//border-bottom: 4px solid @colorAccent;
+						min-width: 15em;
+						padding: 20px 0 20px 0;
+						background: #fff;
+						.box-shadow(0px 1px 30px rgba(0,0,0,0.04));
+						.translate(50%);
+
+						li {
+							display: block;
+							padding: 0 20px;
+
+							&.parent:hover > a,
+							&.parent:focus > a,
+							&.parent > a:hover,
+							&.parent > a:focus {
+								//background-color: @darkerColor;
+							}
+
+							a {
+								// only what needs to be transitioned, otherwise there is a ghosted text effect on mouse out
+								.transition(color ease-in .2s);
+								padding: 6px 0;
+							}
+						}
+
+						// Third level
+						ul {
+							top: 0;
+							left: 100%;
+						}
+					}
+				}
+
+				// Submenu links
+
+				li.parent:hover > a,
+				li.parent:focus > a,
+				li.parent > a:hover,
+				li.parent > a:focus {
+					position: relative;
+				}
+
+				/* Arrow indicating another level */
+				ul li.parent > a:after {
+					font-family: 'Fontcons';
+					content: "\203A";
+					font-size: 0.85em;
+					line-height: 1.2em;
+					display: block;
+					float: right;
+					width: 1em;
+					height: 1em;
+					text-align: right;
+				}
+			}
+		}
+	}
+
+	// *******************************************************
+	// On top styles mixin
+	.onTop() {
+		nav.main {
+
+			ul.menu {
+				// Top level links
+				& > li > a {
+					color: #fff;
+				}
+			}
+		}
+	}
+}

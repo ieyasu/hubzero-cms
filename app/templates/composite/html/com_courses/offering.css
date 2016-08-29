@@ -1,0 +1,45 @@
+@import url('/core/components/com_courses/site/assets/css/offering.css');
+
+p.course-identity {
+	display: block;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	max-width: 330px;
+	overflow: hidden;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+p.course-identity:after {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border: 10px solid #fff;
+	border-color: transparent transparent transparent #fff;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	margin-top: -10px;
+}
+p.course-identity img {
+	width: 100%;
+	*width: auto;
+	width: auto\9;
+}
+
+#content-header {
+	padding: 20px;
+}
+#content-header h2 {
+	margin-right: 0;
+}
+#content-header.with-identity h2 {
+	margin-right: 320px;
+}

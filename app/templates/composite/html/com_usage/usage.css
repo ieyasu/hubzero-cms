@@ -1,0 +1,22 @@
+@import url('/core/components/com_usage/site/assets/css/usage.css');
+
+.summary,
+#statistics .summary {
+	background-color: #EDF0F3;
+}
+
+#statistics .odd {
+	background-color: #F7F7F7;
+}
+
+#statistics .summary .highlight {
+	background-color: #E7EAEC;
+}
+
+#statistics .odd .highlight {
+	background-color: #E7EAEC;
+}
+
+#statistics .even .highlight {
+	background-color: #EDF0F3;
+}

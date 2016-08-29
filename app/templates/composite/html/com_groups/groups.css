@@ -1,0 +1,112 @@
+@import url("/core/components/com_groups/site/assets/css/groups.css");
+/* not yet supported
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+*/
+.group-list {
+  overflow: hidden;
+  margin: 1em 0 0 0;
+}
+.group-list .logo {
+  float: left;
+  max-width: 30px;
+  padding: 3px;
+  overflow: hidden;
+}
+.group-list .logo img {
+  width: 100%;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 0 1px #000;
+  -moz-box-shadow: 0 0 1px #000;
+  box-shadow: 0 0 1px #000;
+}
+.group-list .details-w-logo {
+  margin-left: 45px;
+}
+.group-list .details h3,
+.group-list .details-w-logo h3 {
+  margin: 5px 0 0 0 !important;
+}
+.group-list .status {
+  font-size: 90%;
+  line-height: 1;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #6a0;
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  border-radius: 0.25em;
+  margin: 3px 0 0 0;
+  padding: 0.2em 0.4em;
+  color: #fff;
+  white-space: nowrap;
+}
+.group-list .manager {
+  background-color: #ff1177;
+}
+.group-list .not-published {
+  background-color: #aaa;
+}
+#hubForm fieldset {
+  float: none !important;
+}
+#group_options .dropdown-toggle {
+  height: auto;
+}
+html.chrome #group_options .dropdown-toggle {
+  height: auto;
+}
+/* Fixed nav overlap */
+.group_collections nav .sub-menu {
+  margin-top: 0;
+}
+.group-list .details h3,
+.group-list .details-w-logo h3 {
+  font-family: "open_sansregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+}
+.com_groups .entries thead th {
+  padding: 3px 0;
+}
+#content-header .stats {
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+#content-header .stats div {
+  padding: 0;
+  color: #fff;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-family: "montserratregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@media (min-width: 900px) {
+  #content-header .stats div {
+    display: inline;
+    margin: 0 1rem 0 0;
+  }
+}
+@media (min-width: 1200px) {
+  #content-header .stats div {
+    margin: 0 2rem 0 0;
+  }
+}
+#page_identity a {
+  max-width: none;
+}
+#page_menu li.active:after {
+  display: none;
+}
+#description:after,
+#member_browser:after {
+  box-sizing: content-box;
+}
+#page_options {
+  position: static;
+  margin: 0 0 2rem 0;
+}

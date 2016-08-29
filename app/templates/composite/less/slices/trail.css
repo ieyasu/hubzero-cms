@@ -1,0 +1,10 @@
+/* Breadcrumbs */
+.trail {
+  background: #0d0b0c;
+}
+/* [!] Target Firefox */
+@-moz-document url-prefix() {
+  #trail span.pathway {
+    padding: 1em 0 0.85em 0;
+  }
+}

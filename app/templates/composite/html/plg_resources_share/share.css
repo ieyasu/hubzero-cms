@@ -1,0 +1,6 @@
+@import url('/core/plugins/resources/share/assets/css/share.css');
+
+.shareinfo.active dd {
+	right: 100%;
+	left: auto;
+}

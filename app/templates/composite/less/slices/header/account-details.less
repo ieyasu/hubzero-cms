@@ -1,0 +1,101 @@
+#account-details {
+
+	// *******************************************************
+	// Base styles mixin
+	.base() {
+		.account-details {
+			position: relative;
+
+			.user-info {
+				.user-image {
+					display: none;
+				}
+
+				p {
+					margin: 0 0 10px 0;
+					position: relative;
+
+					.account-name,
+					.account-email {
+						display: block;
+					}
+
+					.account-name {
+						text-transform: uppercase;
+						font-family: @fontHeadingsRegular;
+					}
+
+					.account-email {
+						font-size: 0.8em;
+					}
+
+					&:after {
+						.ab();
+						height: 1px;
+						width: 30px;
+						background: @colorAccent;
+						left: 0;
+						bottom: -10px;
+					}
+				}
+			}
+
+			ul {
+				margin: 10px 0 0 0;
+
+				li {
+					display: block;
+					text-transform: none;
+					letter-spacing: 0;
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	.display() {
+		.account-details {
+			position: absolute;
+			z-index: 900;
+			top: 100%;
+			// offset to clear the trigger's bottom border
+			margin-top: 1px;
+			right: 0;
+			background: #fff;
+			border-bottom: 4px solid @colorAccent;
+			padding: 30px;
+			margin-bottom: 0;
+			display: none;
+			text-align: right;
+			.transition();
+
+			ul {
+				margin: 10px 0 0 0;
+			}
+
+			.user-info {
+				p {
+					&:after {
+						left: auto;
+						right: 0;
+					}
+
+					.account-name {
+						white-space: nowrap;
+
+						&.limit-width {
+							white-space: normal;
+							width: 300px;  // max value for the long name, must match the one in the housekeeping() in hub.js
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.display-show() {
+		.account-details {
+			display: block;
+		}
+	}
+}

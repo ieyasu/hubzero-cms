@@ -1,0 +1,73 @@
+@import url('/core/plugins/members/dashboard/assets/css/dashboard.css');
+/* not yet supported
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+*/
+#page_options li#personalize a {
+  line-height: 1;
+}
+ul.poll {
+  list-style: none;
+  margin-left: 0;
+}
+ul.poll li {
+  margin: 0.5em 0.2em 0.5em 0;
+}
+.module-title {
+  border: none;
+  border-bottom: 1px solid #e6e6e6;
+}
+.module-title h3 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1.4rem;
+  background: #b9b9b9;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-family: "montserratregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.module-title .module-links {
+  background: none;
+}
+.module-title .module-links li a {
+  border-left: 1px solid #e6e6e6;
+}
+.module-title .module-links li a:before {
+  color: #fff;
+}
+.module-title .module-links li a:hover {
+  background: #575d6a;
+}
+.member_dashboard {
+  margin: 0 !important;
+}
+.member_dashboard.js-enabled {
+  margin: 0 !important;
+}
+.modules {
+  margin-bottom: 2rem;
+}
+.module {
+  background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  border: none;
+}
+.module .module-main {
+  top: 2.4rem;
+}
+.module a {
+  color: #696969;
+  border: none;
+}
+.module .module-content h4 {
+  padding: 1em;
+}

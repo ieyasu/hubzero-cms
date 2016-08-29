@@ -1,0 +1,351 @@
+// Header styles
+
+// some header-specific vars
+@logo-height: 5rem;
+
+// Logo height
+@hubLogoH: 5rem;
+
+@headerPdT: 0.3rem;
+@headerPdB: 0.3rem;
+
+@expandHeaderAtLeastHeight: 600px;
+@headerPdTSpace: 1rem;
+@headerPdBSpace: 1rem;
+
+// Panel columns setup
+@panelColumnsFrom: 550px;
+@panelColumnsTo: @sizeDesktop - 1px;
+// More padding to columns sizing point
+@panelColumnsMoreSpace: 800px;
+
+// Mobile menu button
+@menuButtonTextLineH: 20px;
+@menuButtonLineH: 2px;
+
+// Search styles
+@import "search.less";
+// Mobile menu button styles
+@import "mobile-menu-button.less";
+// Account details styles
+@import "account-details.less";
+// Main navigation styles
+@import "main-navigation.less";
+
+
+header.main {
+	padding-top: @headerPdT;
+	padding-bottom: @headerPdB;
+	position: fixed;
+	z-index: 9995;
+	width: 100%;
+	background: #fff;
+	top: 0;
+	.transition(all 0.5s ease-out);
+	.box-shadow(0px 1px 30px rgba(0,0,0,0.04));
+
+	// remove links underlines in the header
+	a {
+		border-bottom: none;
+	}
+
+	.wrap {
+		.contain-full();
+	}
+
+	.hub-brand {
+
+		.hub-logo {
+
+			a {
+				display: block;
+				float: left;
+			}
+			svg {
+				display: block;
+				height: @hubLogoH;
+				.transition(all 0.5s ease-out);
+
+				#pro {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.all-nav {
+		// All links
+		a {
+			color: @colorNav;
+
+			&:hover {
+				color: @colorAccent;
+			}
+		}
+
+		// AUX nav: search and login
+		.all-nav-aux {
+			// Search base styles (from search.less)
+			#search > .base(); // * namespaced mixin call
+
+			&>ul {
+				margin: 0;
+
+				li {
+					list-style: none;
+
+					&>a {
+						font-size: 0.8rem;
+
+						&:hover {
+							color: @colorAccent;
+						}
+					}
+				}
+			}
+
+			.user-account {
+				display: inline-block;
+				position: relative;
+
+				// Account details base styles (from account-details.less)
+				#account-details > .base(); // * namespaced mixin call
+
+				// Login link
+				.user-account-link {
+
+				}
+			}
+		}
+
+		.all-nav-main {
+			// Main navigation menu (from main-navigation.less)
+			#main-nav > .base();   // * namespaced mixin call
+		}
+
+		// *********************************************************************
+		// Mobile-only styles
+		@media (max-width: @sizeDesktop - 1px) {
+			.stretch();
+			z-index: 950;
+			background: #fff;
+			overflow: auto;
+			display: none;
+
+			.all-nav-aux,
+			.all-nav-main {
+				padding: 2rem;
+
+				@media (min-width: @panelColumnsMoreSpace) {
+					padding: 3rem;
+				}
+			}
+
+			// AUX nav: search and login
+			.all-nav-aux {
+				background: #f9f9f9;
+
+				// Search base styles (from search.less)
+				#search > .mobile(); // * namespaced mixin call
+
+				.user-account {
+					// Login link
+					.user-account-link {
+
+						// Hide the login link when logged in
+						&.loggedin {
+							display: none;
+						}
+					}
+				}
+
+				.subnav-search {
+					display: none;
+				}
+			}
+
+			.all-nav-main {
+				.box-shadow(0px 1px 30px rgba(0, 0, 0, 0.06));
+
+				// Main navigation menu (from main-navigation.less)
+				#main-nav > .mobile();   // * namespaced mixin call
+			}
+		}
+
+		// *********************************************************************
+		// Split the panel into two columns (aux on the left, main on the right)
+		@media (min-width: @panelColumnsFrom) and (max-width: @panelColumnsTo) {
+			.all-nav-aux,
+			.all-nav-main {
+				width: 50%;
+				height: 100%;
+				float: left;
+				overflow: auto;
+			}
+
+			.all-nav-aux {
+				// Search panel split columns styles (from search.less)
+				#search > .panel-split();	// * namespaced mixin call
+			}
+		}
+
+		// *********************************************************************
+		// Desktop styles, navigation comes to the page
+		@media (min-width: @sizeDesktop) {
+
+			// AUX nav: search and login
+			.all-nav-aux {
+				position: absolute;
+				top: 0;
+				right: 0;
+
+				&>ul {
+					margin: 0;
+
+					&>li {
+						display: inline-block;
+						margin: 0 0 0 0.3rem;
+
+						&>a {
+							line-height: @hubLogoH;
+						}
+					}
+				}
+
+				// Search base styles (from search.less)
+				#search > .display(); // * namespaced mixin call
+
+				.user-account {
+
+					// Account details display styles (from account-details.less)
+					#account-details > .display(); // * namespaced mixin call
+
+					&:hover,
+					&:focus {
+
+						&>a {
+							color: @colorAccent;
+						}
+
+						#account-details > .display-show(); // * namespaced mixin call
+					}
+				}
+			}
+
+			.all-nav-main {
+
+				// Main navigation menu (from main-navigation.less)
+				#main-nav > .display();   // * namespaced mixin call
+			}
+		}
+	}
+
+	// Mobile menu base styles (from mobile-menu-button.less)
+	#mobile-menu-button > .base();	// * namespaced mixin call
+
+	// On top styles
+	&.on-top {
+		position: absolute;
+		background: transparent;
+		.box-shadow(none);
+
+		@media (min-height: @expandHeaderAtLeastHeight) {
+			padding-top: @headerPdTSpace;
+			padding-bottom: @headerPdBSpace;
+		}
+
+		.hub-brand {
+
+			.hub-logo {
+
+				svg {
+					* {
+						fill: #fff;
+					}
+				}
+			}
+		}
+
+		// Mobile menu on top styles (from mobile-menu-button.less)
+		#mobile-menu-button > .onTop();	// * namespaced mixin call
+
+		@media (min-width: @sizeDesktop) {
+
+			.all-nav {
+
+				// AUX nav: search and login
+				.all-nav-aux {
+
+					& > ul {
+
+						& > li {
+
+							& > a {
+								color: #fff;
+
+								&:hover {
+									color: @colorAccent;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.all-nav-main {
+
+				// On top navigation menu (from main-navigation.less), only for desktop
+				#main-nav > .onTop(); // * namespaced mixin call
+			}
+		}
+	}
+
+	// Header open panel
+	&.panel-open {
+
+		// Mobile menu panel open styles (from mobile-menu-button.less)
+		#mobile-menu-button > .panel-open();  // * namespaced mixin call
+	}
+
+	&.out {
+		.translate(0, -100%);
+	}
+
+	&.display-nav {
+		bottom: 0;
+	}
+
+	@media (min-width: @sizeDesktop) {
+
+		.inner {
+			text-align: center;
+			position: relative;
+
+			.hub-brand {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+	}
+}
+
+// PRO
+body.nh-pro {
+
+	header.main {
+
+		.hub-brand {
+
+			.hub-logo {
+
+				svg {
+
+					#pro {
+						display: inline;
+					}
+				}
+			}
+		}
+	}
+}

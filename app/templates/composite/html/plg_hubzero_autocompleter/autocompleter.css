@@ -1,0 +1,50 @@
+@import url("../../../../../core/plugins/hubzero/autocompleter/autocompleter.css");
+
+
+/* Field - Match styles for form inputs */
+	#commentform ul.token-input-list-act li input,
+	#commentform ul.token-input-list-acg li input,
+	#commentform ul.token-input-list-acm li input,
+	#commentform ul.token-input-list-act li input:focus,
+	#commentform ul.token-input-list-acg li input:focus,
+	#commentform ul.token-input-list-acm li input:focus,
+	#commentform ul.token-input-list-act li input[type=text],
+	#commentform ul.token-input-list-acg li input[type=text],
+	#commentform ul.token-input-list-acm li input[type=text],
+	#commentform ul.token-input-list-act li input[type=text]:focus,
+	#commentform ul.token-input-list-acg li input[type=text]:focus,
+	#commentform ul.token-input-list-acm li input[type=text]:focus,
+	#hubForm ul.token-input-list-act li input,
+	#hubForm ul.token-input-list-acg li input,
+	#hubForm ul.token-input-list-acm li input,
+	#hubForm ul.token-input-list-act li input:focus,
+	#hubForm ul.token-input-list-acg li input:focus,
+	#hubForm ul.token-input-list-acm li input:focus,
+	#hubForm ul.token-input-list-act li input[type=text],
+	#hubForm ul.token-input-list-acg li input[type=text],
+	#hubForm ul.token-input-list-acm li input[type=text],
+	#hubForm ul.token-input-list-act li input[type=text]:focus,
+	#hubForm ul.token-input-list-acg li input[type=text]:focus,
+	#hubForm ul.token-input-list-acm li input[type=text]:focus,
+	ul.token-input-list-act li input:focus,
+	ul.token-input-list-acg li input:focus,
+	ul.token-input-list-acm li input:focus,
+	ul.token-input-list-act li input[type=text],
+	ul.token-input-list-acg li input[type=text],
+	ul.token-input-list-acm li input[type=text],
+	ul.token-input-list-act li input,
+	ul.token-input-list-acg li input,
+	ul.token-input-list-acm li input {
+		background: transparent;
+	}
+	ul.token-input-list-act,
+	ul.token-input-list-acg,
+	ul.token-input-list-acm {
+		border: 1px solid #D9D9D9;
+		background-color: #f1f1f1;
+	}
+
+li.token-input-token-act, li.token-input-token-acg, li.token-input-token-acm {
+	line-height: 1.5rem;
+	border: none;
+}

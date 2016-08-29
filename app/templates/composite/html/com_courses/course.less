@@ -1,0 +1,60 @@
+@import url("../../../../../core/components/com_courses/site/assets/css/course.css");
+
+@import "../../less/template-vars.less";
+@import "../../less/template-mixins.less";
+
+.section {
+	position: relative;
+	.padContain();
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+.course.intro {
+	.subject {
+		padding: 0;
+	}
+}
+
+p.course-identity {
+	width: auto;
+	max-width: 300px;
+	margin: 0 auto 0 0;
+
+	@media (min-width: @sizeM) {
+		margin: 0 0 0 auto;
+	}
+}
+
+section.course .subject,
+.course .subject {
+	margin-right: 0;
+}
+
+section.course .aside,
+.course .aside {
+
+	width: auto;
+
+	@media (min-width: @sizeM) {
+		margin-top: 0;
+		border: none;
+		display: table-cell;
+		vertical-align: top;
+		width: 210px;
+		padding: 0 0 0 @padContain;
+	}
+
+	@media (min-width: @sizeL) {
+		width: 350px;
+		padding: 0 0 0 50px;
+	}
+
+	@media (min-width: @sizeXL) {
+		width: 550px;
+	}
+}
+
+.course-summary {
+	margin-top: 0;
+}

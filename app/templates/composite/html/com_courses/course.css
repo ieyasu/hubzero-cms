@@ -1,0 +1,75 @@
+@import url("../../../../../core/components/com_courses/site/assets/css/course.css");
+/* not yet supported
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+*/
+.section {
+  position: relative;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+@media (min-width: 900px) {
+  .section {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+}
+@media (min-width: 1200px) {
+  .section {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+}
+.course.intro .subject {
+  padding: 0;
+}
+p.course-identity {
+  width: auto;
+  max-width: 300px;
+  margin: 0 auto 0 0;
+}
+@media (min-width: 900px) {
+  p.course-identity {
+    margin: 0 0 0 auto;
+  }
+}
+section.course .subject,
+.course .subject {
+  margin-right: 0;
+}
+section.course .aside,
+.course .aside {
+  width: auto;
+}
+@media (min-width: 900px) {
+  section.course .aside,
+  .course .aside {
+    margin-top: 0;
+    border: none;
+    display: table-cell;
+    vertical-align: top;
+    width: 210px;
+    padding: 0 0 0 25px;
+  }
+}
+@media (min-width: 1200px) {
+  section.course .aside,
+  .course .aside {
+    width: 350px;
+    padding: 0 0 0 50px;
+  }
+}
+@media (min-width: 1600px) {
+  section.course .aside,
+  .course .aside {
+    width: 550px;
+  }
+}
+.course-summary {
+  margin-top: 0;
+}

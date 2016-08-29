@@ -1,0 +1,98 @@
+/* not yet supported
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+*/
+/**
+ * @package     hubzero-cms
+ * @file        templates/citscibio/html/system/css/introduction.css
+ * @copyright   Copyright 2005-2015 HUBzero Foundation, LLC.
+ * @license     http://opensource.org/licenses/MIT MIT
+ */
+/*
+	Commonly used styles for the first page (introduction) of components
+*/
+/* Intro */
+#introduction {
+  margin: 0;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  -webkit-box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.04);
+  -moz-box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.04);
+}
+@media (min-width: 900px) {
+  #introduction {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+}
+@media (min-width: 1200px) {
+  #introduction {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+}
+#introduction:after {
+  content: '' !important;
+}
+#introduction ul {
+  list-style: none;
+  margin: 0;
+}
+#introduction ul li {
+  margin: 0;
+}
+#introduction ul li a {
+  display: inline-block;
+  -moz-transition: all ease-in 0.2s;
+  -o-transition: all ease-in 0.2s;
+  -webkit-transition: all ease-in 0.2s;
+  transition: all ease-in 0.2s;
+}
+#introduction .data-entry {
+  background: #fafafa;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+/* Four Columns */
+/*div[class^="com_"] .four,
+div[class*=" com_"] .four*/
+#content .grid,
+#content .three,
+#content .four {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  position: relative;
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+#content .grid:first-of-type,
+#content .three:first-of-type,
+#content .four:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+#content .grid .grid {
+  border: none;
+  margin-bottom: 0;
+  padding-top: 0;
+}
+#content .col h3 a,
+#content .four h3 a {
+  color: #1f2122;
+  border-bottom: none;
+}

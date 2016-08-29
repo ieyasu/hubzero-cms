@@ -1,0 +1,65 @@
+@import url("/core/components/com_resources/site/assets/css/resources.css");
+/* not yet supported
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+*/
+.overviewcontainer header h2 {
+  margin-top: 0;
+}
+.overviewcontainer #authorslist {
+  margin-top: 0;
+  padding-right: 0;
+  margin-bottom: 1rem;
+}
+.overviewcontainer #primary-document .btn {
+  padding: 1rem 2rem;
+  text-align: center;
+}
+.overviewcontainer #primary-document .btn .caption {
+  color: #fff;
+}
+.metadata {
+  border: none;
+  background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  padding: 1em;
+}
+.com_resources .launcharea ul.supdocln li a {
+  border-bottom: 0;
+}
+.explainscale {
+  padding: 1em;
+  width: auto;
+  border: none;
+  background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+.aside.extracontent ul li a {
+  padding-left: 25px;
+}
+.extracontent li a:before {
+  top: 0.3em;
+}
+.com_resources ul.sub-menu {
+  margin-bottom: 2rem;
+}
+.com_resources .resource-type {
+  padding-left: 0;
+}
+.extracontent li a:before,
+.com_resources .resource-type:before {
+  display: none;
+}

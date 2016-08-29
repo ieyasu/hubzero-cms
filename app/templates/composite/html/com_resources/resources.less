@@ -1,0 +1,75 @@
+@import url("/core/components/com_resources/site/assets/css/resources.css");
+
+@import "../../less/template-vars.less";
+@import "../../less/template-mixins.less";
+
+.overviewcontainer {
+
+	header {
+
+		h2 {
+			margin-top: 0;
+		}
+	}
+
+	#authorslist {
+		margin-top: 0;
+		padding-right: 0;
+		margin-bottom: 1rem;
+	}
+
+	#primary-document {
+
+		.btn {
+			padding: 1rem 2rem;
+			text-align: center;
+
+			.caption {
+				color: #fff;
+			}
+		}
+	}
+}
+
+.metadata {
+	border: none;
+	background: #fff;
+	.rounded(3px);
+	.box-shadow(0 1px 4px rgba(0, 0, 0, 0.05));
+	padding: 1em;
+}
+
+.com_resources .launcharea ul.supdocln li a {
+	border-bottom: 0;
+}
+
+.explainscale {
+	padding: 1em;
+	width: auto;
+	border: none;
+	background: #fff;
+	.rounded(3px);
+	.box-shadow(0 1px 4px rgba(0, 0, 0, 0.05));
+}
+
+.aside.extracontent ul li a {
+	padding-left: 25px;
+}
+
+.extracontent li a:before {
+	top: 0.3em;
+}
+
+.com_resources ul.sub-menu {
+	margin-bottom: 2rem;
+}
+
+// remove icons
+.com_resources .resource-type {
+	padding-left: 0;
+}
+
+.extracontent li a:before,
+.com_resources .resource-type:before {
+	display: none;
+}

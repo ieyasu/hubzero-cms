@@ -1,0 +1,10 @@
+@import url('/core/plugins/projects/publications/assets/css/curation.css');
+
+.button-wrapper:before {
+	color: #EFEBEB;
+	margin-left: 5px;
+	margin-top: 2px;
+	position: absolute;
+	z-index: 1000;
+}
+

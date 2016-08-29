@@ -1,0 +1,68 @@
+/* Pro */
+.nhPro,
+a.nhPro {
+  color: #FF9966;
+}
+.proBanner {
+  border: 1px solid #efefef;
+  background: #FBFBFB;
+}
+.proBanner.hor {
+  display: table;
+  width: 100%;
+}
+.proBanner.explain {
+  padding: 20px 10px;
+}
+.proBanner.hor.sumulations .inner {
+  display: table-row;
+}
+.proBanner.hor .content {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px 10px 10px 100px;
+  background: url('@{pathTemplate/images/pro/gears.svg');
+  background-position: center left;
+  background-repeat: no-repeat;
+}
+.proBanner .content h4 {
+  margin: 0 0 0.6em 0;
+  color: #FF9966;
+  font-size: 1.6em;
+  font-weight: normal;
+}
+.proBanner.hor .content p {
+  margin: 0;
+}
+.proBanner.hor .picture {
+  text-align: right;
+  padding: 10px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.proBanner .picture a,
+.proBanner .picture:hover {
+  border: 0;
+}
+.proBanner.hor .picture {
+  max-width: 300px;
+}
+.proBanner.explain .picture {
+  max-width: 200px;
+}
+.com_members .proBar {
+  padding-top: 1.6em;
+  clear: both;
+  margin: 0;
+  color: #999;
+}
+.com_members .proBar strong {
+  display: inline-block;
+  background: #ee7f5b;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  margin-right: 0.5em;
+  font-weight: normal;
+  font-family: 'latobold', sans-serif;
+}

@@ -1,0 +1,11 @@
+@import url('/core/plugins/projects/publications/assets/css/publications.css');
+
+.abox-controls a {
+	font-size: 70% !important;
+}
+.btn {
+	font-size: 0.8em !important;
+}
+ul.next-options .btn {
+	font-size: 100% !important;
+}

@@ -1,0 +1,34 @@
+/* not yet supported
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+*/
+@import url('/core/plugins/members/contributions/assets/css/contributions.css');
+/* Item listing */
+.container h4 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  position: relative;
+  font-family: "montserratregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.container h4 a {
+  border: none;
+  color: #1f2122;
+}
+.container h4 span {
+  margin-left: 0.2em;
+}
+.category-header span.more {
+  position: absolute;
+  right: 0;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  text-transform: none;
+  color: #b0832d;
+  font-family: "open_sansregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.category-wrap + .category-header {
+  margin-top: 3rem;
+}

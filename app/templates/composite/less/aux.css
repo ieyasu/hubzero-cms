@@ -1,0 +1,52 @@
+.ckeditor-body,
+.cke_panel_container body {
+  padding: 10px;
+  min-width: inherit;
+  background: #FFF !important;
+}
+.ckeditor-body table {
+  border: none;
+}
+.ckeditor-body table th,
+.ckeditor-body table td {
+  border: 1px solid #dadada;
+}
+.article-info,
+.com_content .actions {
+  display: none;
+}
+/* [!] J2.5 Hide edit buttons etc. on com_content pages */
+.com_content ul.actions {
+  display: none;
+}
+#taxonomy .subject {
+  margin-right: 235px;
+}
+#taxonomy .aside {
+  float: right;
+  width: 214px;
+}
+#taxonomy .aside fieldset label {
+  padding: 0 1em;
+}
+.supported {
+  position: relative;
+  padding-left: 20px;
+}
+.supported:before {
+  position: absolute;
+  font-family: 'Fontcons';
+  font-size: 18px;
+  line-height: 18px;
+  content: "\f04e";
+  color: #E2AA23;
+  left: 3px;
+  margin-top: -9px;
+  top: 50%;
+}
+.resources.results .supported:before {
+  left: 0;
+}
+.metadata .supported {
+  padding-left: 20px;
+}

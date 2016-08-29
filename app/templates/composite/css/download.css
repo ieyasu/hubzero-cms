@@ -1,0 +1,51 @@
+body {
+  background: white;
+  margin: 0px;
+  padding: 0;
+  color: #000;
+  font: 12px/17px "Trebuchet MS", Arial, Helvetica, Verdana, sans-serif;
+  min-width: 500px;
+}
+h1 {
+  font-size: 2em;
+  color: #666;
+}
+#main {
+  background: white;
+  padding: 4px 4px 4px 12px;
+}
+#description {
+  padding: 0px;
+}
+#warning {
+  margin: 1em 0;
+  padding: 10px;
+  border: 1px solid #EFEAC2;
+  color: #CC6633;
+  background: #FFFDEF url("../../zepar/images/icons/warning.gif") 10px 10px no-repeat;
+}
+#logo {
+  margin: 0;
+  padding: 0;
+  height: 76px;
+  background: #fff url("../../zepar/images/layout/background.gif") left bottom repeat-x;
+  position: relative;
+  text-align: left;
+}
+#logo h1 {
+  margin: 0;
+  padding: 0;
+  height: 76px;
+}
+#logo h1 a {
+  background: url("../../zepar/images/logos/nanohub.gif") left bottom no-repeat;
+  margin: 0;
+  padding: 0;
+  width: 500px;
+  height: 76px;
+  display: block;
+  text-indent: -555em;
+  border: none;
+  top: 0;
+  left:0;
+}

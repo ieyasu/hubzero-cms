@@ -1,0 +1,8 @@
+@import url('/core/components/com_courses/site/assets/css/browse.css');
+
+.com_courses .subject h3 span {
+	float: right;
+	text-transform: none;
+	font-size: 85%;
+	color: #aaa;
+}

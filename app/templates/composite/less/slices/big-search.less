@@ -1,0 +1,80 @@
+// Big search
+#big-search {
+
+	*, *:before, *:after {
+		.box-sizing(border-box);
+	}
+
+	position: fixed;
+	background: @colorPanels;
+	.radialGradiant(lighten(@colorPanels, 5%), @colorPanels);
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 100%;
+	z-index: 9999;
+	text-align: center;
+	.transition();
+	.transition-delay(0.1s);
+	.scale(0.9);
+	overflow: hidden;
+
+	.inner {
+		position: absolute;
+		width: 100%;
+		max-width: 1000px;
+		.padContain();
+		text-align: center;
+		top: 0;
+		left: 50%;
+		.translate(-50%, -300%);
+		.transition(all ease .2s);
+		.transition-delay(0.3s);
+
+		form {
+			position: relative;
+		}
+
+		label {
+			display: none;
+		}
+
+		legend {
+			color: #fff;
+			display: block;
+			text-align: left;
+			font-size: 8vw;
+			line-height: 1em;
+			position: absolute;
+			top: 100%;
+			right: 0;
+			text-transform: uppercase;
+			font-family: @fontTextLight;
+			opacity: 0.1;
+		}
+
+		#searchword {
+			width: 100%;
+			.placeholder('#efefef');
+			padding: 20px;
+			font-size: 1.2em;
+		}
+	}
+
+	// close button
+	button {
+		.closeButton(40px);
+		top: @padContain;
+		right: @padContain;
+	}
+
+	&.open {
+		bottom: 0;
+		.scale(1);
+
+		.inner {
+			top: 50%;
+			.translate(-50%, -50%);
+		}
+	}
+}

@@ -1,0 +1,6 @@
+@import url('/core/plugins/members/messages/assets/css/messages.css');
+
+.member_messages .section {
+	border: none;
+	background: none;
+}

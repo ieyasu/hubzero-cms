@@ -1,0 +1,14 @@
+@import url('/core/plugins/members/profile/assets/css/profile.css');
+/* not yet supported
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+*/
+#profile li .section-content .key {
+  font-weight: normal;
+}
+#profile li .section-content .value {
+  color: #696969;
+}

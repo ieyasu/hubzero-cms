@@ -1,0 +1,9 @@
+.grid-items {
+	max-width: 1400px;
+	margin-bottom: 2em;
+}
+
+.grid-items h3 {
+	color: #3a589b;
+	margin: 1em 0 1em 0;
+}

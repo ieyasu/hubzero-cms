@@ -1,0 +1,111 @@
+.neat,
+p.neat {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-family: @fontHeadingsRegular;
+	color: @colorAccent;
+	margin: 0.6em 0;
+}
+
+.dark-bg {
+	.neat {
+		color: #fff;
+	}
+}
+
+.contentpaneopen,
+.section {
+
+	p + h2,
+	ul + h2 {
+		margin-top: 2rem;
+	}
+
+	p + h3 {
+		margin-top: 2em;
+	}
+
+	p:first-child,
+	h2:first-child,
+	h3:first-child {
+		margin-top: 0;
+	}
+
+}
+
+/* Overlay */
+#overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #000;
+	z-index:998;
+}
+#initializing {
+	position: absolute;
+	margin-left: -45px;
+	padding: 0;
+	top: 80px;
+	left: 50%;
+	width: 90px;
+	height: 90px;
+	z-index: 888;
+	text-align: center;
+	display: none;
+}
+
+/* Nanohub bar */
+#nanohubbar {
+	height: 35px;
+	overflow: hidden;
+	background: url("/site/images/groups/bar-bg.gif") top;
+	position: relative;
+}
+#nanohubbar a#powered {
+	float: left;
+	display: block;
+	height: 35px;
+	width: 183px;
+	background: url("/site/images/groups/powered-by-nanohub.png") top no-repeat;
+	text-indent: -19000px;
+	margin: 0 0 0 10px;
+}
+#nanohubbar p {
+	height: 35px;
+	float: right;
+	font-family: Verdana, Geneva, sans-serif;
+	background: url("/site/images/groups/nanohub_symbol.png") top right no-repeat;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	font-size: 10px;
+	padding: 10px 55px 0 0;
+	margin: 0 10px 0 0;
+}
+#nanohubbar a {
+	color: #b7c8d1;
+}
+#nanohubbar p a:hover {
+	font-weight: normal;
+	font-size: 10px;
+	color: #dce4e9;
+	border: none;
+}
+#courses #account {
+	margin: 0 !important;
+}
+#courses #help-container {
+	padding: 20px;
+}
+#courses #tab {
+	float: right;
+	margin: 0 20px 0 0 !important;
+}
+#courses #tab a {
+	width: 10.5em;
+	line-height: 1.8em;
+}
+#courses #tab a span {
+	width: 100%;
+	text-align: center;
+}

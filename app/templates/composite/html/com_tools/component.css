@@ -1,0 +1,16 @@
+@import url("/core/components/com_tools/site/assets/css/component.css");
+/* not yet supported
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+*/
+ul.screenshots:before,
+ul.screenshots:after {
+  content: " ";
+  display: table;
+}
+ul.screenshots:after {
+  clear: both;
+}

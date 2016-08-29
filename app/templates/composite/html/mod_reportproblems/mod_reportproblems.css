@@ -1,0 +1,521 @@
+/* not yet supported
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+*/
+/**
+ * @package     hubzero-cms
+ * @file        modules/mod_reportproblems/mod_reportproblems.css
+ * @copyright   Copyright 2005-2015 HUBzero Foundation, LLC.
+ * @license     http://opensource.org/licenses/MIT MIT
+ */
+/*
+
+	-- -- -- -- -- -- --
+	mod_reportproblems
+	-- -- -- -- -- -- --
+
+*/
+/* Help Pane */
+#help-pane {
+  position: fixed;
+  background: #292929;
+  background-color: #292929;
+  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(#363636), to(#292929));
+  background-image: -webkit-radial-gradient(circle, #363636, #292929);
+  background-image: -moz-radial-gradient(circle, #363636, #292929);
+  background-image: -o-radial-gradient(circle, #363636, #292929);
+  background-repeat: no-repeat;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 100%;
+  z-index: 9999;
+  text-align: center;
+  -moz-transition: all ease-in 0.2s;
+  -o-transition: all ease-in 0.2s;
+  -webkit-transition: all ease-in 0.2s;
+  transition: all ease-in 0.2s;
+  -webkit-transition-delay: 0.1s;
+  -moz-transition-delay: 0.1s;
+  -ms-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9);
+  overflow: auto;
+}
+#help-pane *,
+#help-pane *:before,
+#help-pane *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#help-pane button {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  font-size: 0;
+  text-indent: -9999px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  top: 25px;
+  right: 25px;
+}
+#help-pane button :focus {
+  outline: none;
+}
+#help-pane button:before,
+#help-pane button:after {
+  position: absolute;
+  display: block;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  content: "";
+  -moz-transition: all linear 0.1s;
+  -o-transition: all linear 0.1s;
+  -webkit-transition: all linear 0.1s;
+  transition: all linear 0.1s;
+}
+#help-pane button:before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+#help-pane button:after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+}
+#help-pane button:hover:before {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+}
+#help-pane button:hover:after {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  opacity: 0;
+}
+@media (min-width: 900px) {
+  #help-pane form fieldset {
+    width: 50%;
+    float: left;
+    padding-left: 2rem;
+  }
+  #help-pane form fieldset:first-child {
+    padding-left: 0;
+    padding-right: 2rem;
+  }
+}
+#help-pane.open {
+  bottom: 0;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+}
+#help-pane.open #help-container {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+}
+#help-container {
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: #cecece;
+  text-align: left;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  -moz-transition: all ease 0.2s;
+  -o-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+  -webkit-transform: translate(0, -100%);
+  -moz-transform: translate(0, -100%);
+  -ms-transform: translate(0, -100%);
+  -o-transform: translate(0, -100%);
+  -webkit-transition-delay: 0.3s;
+  -moz-transition-delay: 0.3s;
+  -ms-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+}
+@media (min-width: 900px) {
+  #help-container {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+}
+@media (min-width: 1200px) {
+  #help-container {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+}
+#help-container .col {
+  width: 100%;
+  float: none;
+}
+#help-container .col:nth-of-type(2) {
+  border-top: 1px solid #3C3C3C;
+  margin-top: 1rem;
+}
+@media (min-width: 900px) {
+  #help-container .col.span4 ul {
+    -moz-column-width: 50%;
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule-color: #EEE;
+    -moz-column-rule-style: none;
+    -moz-column-rule-width: 1px;
+    -webkit-column-width: 50%;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 4rem;
+    -webkit-column-rule-color: #EEE;
+    -webkit-column-rule-style: none;
+    -webkit-column-rule-width: 1px;
+    column-width: 50%;
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule-color: #EEE;
+    column-rule-style: none;
+    column-rule-width: 1px;
+  }
+  #help-container .col.span4 ul li {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
+    display: table;
+  }
+}
+#help-container h1 {
+  display: none;
+}
+#help-container h2 {
+  color: #fff;
+  font-size: 1.2rem;
+}
+#help-container h3 {
+  font-size: 1.1rem;
+}
+#help-container a {
+  color: #fff;
+  border: none;
+}
+#help-container a:hover {
+  color: #4390B5;
+}
+#help-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#help-container ul li {
+  padding: 0.7em 0em 0.7em 3em;
+  list-style: none;
+  position: relative;
+}
+#help-container ul li:before,
+#help-container ul li:after {
+  content: "";
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  font-family: 'Fontcons';
+  font-size: 32px;
+  line-height: 32px;
+  border: none;
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  z-index: 100;
+  color: #cecece;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6);
+}
+#help-container ul li h3 {
+  padding: 0;
+  border: none;
+  margin: 0;
+}
+#help-container li.help-kb:before {
+  content: "\f072";
+}
+#help-container li.help-qa:before {
+  content: "\f086";
+}
+#help-container li.help-wish:before {
+  content: "\f078";
+}
+#help-container li.help-tickets:before {
+  content: "\f055";
+}
+#help-container li p {
+  margin: 0;
+}
+#help-container form {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+#help-container fieldset {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+}
+#help-container .required,
+#help-container .optional {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 80%;
+}
+#help-container .optional {
+  display: none;
+}
+#help-container label {
+  padding-top: 1.2em;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+}
+#help-container label span.required,
+#help-container label span.optional {
+  position: absolute;
+  top: 1.5em;
+  right: 0;
+}
+#help-container label span.info-block {
+  display: block;
+  border: 1px solid #555;
+  padding: 0.2em;
+  background-color: #333;
+}
+#help-container input,
+#help-container select,
+#help-container textarea {
+  margin-top: 0.25em;
+  width: 100%;
+}
+#help-container textarea {
+  height: 126px;
+}
+#help-container textarea.long {
+  height: 166px;
+}
+#help-container .submit {
+  clear: both;
+  margin: 0.5em -0.5em 0.5em 0;
+  padding: 0.2em 0 0 0;
+  text-align: right;
+  border-top: 1px solid #333;
+}
+#help-container .submit input,
+#help-container .option {
+  width: auto;
+}
+#trSuccess strong,
+#trSuccess h3 {
+  color: #fff;
+}
+#trSuccess div {
+  text-align: center;
+  float: right;
+  width: 20%;
+  margin-top: 1em;
+}
+#trSuccess div p {
+  margin-top: 0;
+  padding-top: 0;
+}
+#trSuccess div span {
+  display: block;
+  font-size: 2em;
+  color: #FAF196;
+  margin: 1em 0 1em 0;
+}
+#trSuccess div span a {
+  color: #FAF196;
+  border: none;
+}
+#trSuccess div span a:hover {
+  color: #fff;
+  border: none;
+}
+#trSending {
+  text-align: center;
+  position: relative;
+}
+#trSending p {
+  text-align: center;
+  font-size: 1.5em;
+  width: 10em;
+  margin: 0 auto;
+  padding: 3em 0 0 0;
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Loading animation container */
+.rp-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+}
+/* Spinning circle (inner circle) */
+.rp-loading .rp-masked-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 12px;
+  border: 3px solid white;
+}
+/* Spinning circle mask */
+.rp-loading .rp-mask {
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+}
+/* Spinner */
+.rp-loading .rp-spinner {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 26px;
+  height: 26px;
+  -webkit-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+}
+#trSending,
+#trSuccess {
+  display: none;
+}
+#help-container label#trBotcheck-label {
+  display: none;
+}
+#help-btn-close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 40px;
+  top: 15px;
+  border: none;
+  overflow: hidden;
+  cursor: pointer;
+  color: #ccc;
+}
+#help-btn-close:before {
+  content: "\f057";
+  font-family: "Fontcons";
+  margin-right: 5em;
+  font-size: 30px;
+  line-height: 1;
+}
+#help-btn-close:hover {
+  color: #fff;
+}
+.filetypes {
+  display: none;
+}
+/* Help Tab */
+#tab {
+  display: inline-block;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  line-height: 1.3em;
+  font-size: 90%;
+  float: left;
+  margin-right: 20px;
+}
+#tab a {
+  padding: 0.9em;
+  height: 1.3em;
+  color: #d7c2ef;
+  height: auto;
+  display: block;
+  background: none;
+  background-color: none;
+  border: none;
+}
+#tab a span {
+  padding: 0;
+  background: none;
+  color: #595A5C;
+  height: auto;
+  display: block;
+  border: none;
+  margin: 0;
+}
+#tab.active {
+  background: none;
+}
+#tab.active a {
+  color: #FF9966;
+  background: none;
+}
+#tab.active a span {
+  color: #FF9966;
+}
+#tab a:hover {
+  color: #FF9966;
+  background: none;
+}
+#tab a:hover span {
+  color: #FF9966;
+}
+#troublereport textarea {
+  font-size: 1em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+#tab small.tab-before,
+#tab a span:before {
+  margin-right: 1em;
+}
+#tab small.tab-before,
+#tab a span:before {
+  display: none;
+}

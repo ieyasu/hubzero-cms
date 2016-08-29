@@ -1,0 +1,142 @@
+@pathTemplate:          "/app/templates/composite";
+
+// Scaffolding
+// -------------------------
+
+//A3792C
+
+@mainBackground:		#f8f8f8;
+
+// Colors
+@colorPanels:			#292929;
+
+@colorBlue:				rgba(38, 104, 136, 1);
+@colorBlueOnDark:		#4390B5;
+
+@colorAccent:			#A3792C;
+@colorAccentSecondary:	#73C69C;
+@colorAccentSubtle:		#6e7586;
+@colorLink:				#b0832d; //#7CA6C0;
+@colorLinkHover:		#6ca3ba;
+
+@colorDarkHeading:		#1f2122;
+@colorMediumHeading:	#56595A;
+
+@colorDarkText:			#333;
+@colorMediumText:		#696969;
+@colorLightText:		#454947;
+
+@colorFaintBorder: 		#f7f7f7;
+@colorLightBorder:		#f0f0f0;
+@colorMedBorder:		#c0c0c0;
+
+@colorBodyBackground:	#fafafa;
+
+//@colorPro:				#F34B1B;
+@colorPro:				#F33D09;
+
+@colorTheme:			#A3792C;
+@colorGreySubtle:		#e6e6e6;
+
+// Dark backgrounds for popup menus
+@colorAuxMenu:			#292929;
+@colorLineAuxMenu:		#3C3C3C;
+
+@colorText:             @colorDarkText;
+@colorBody:				@colorMediumText;
+
+@colorNav:				#505561;
+
+@colorTextLessImportant:#ababab;
+
+// Comments
+@commentFormBorderColor:	@colorLightBorder;
+
+// Links
+// -------------------------
+@linkColor:             #b0832d; //#7CA6C0;
+@linkHoverColor:        @colorLightText;
+@linkLineColor:			fade(@linkColor, 50%);
+@linkHoverLineColor:	fade(@colorLightText, 90%);
+
+// Buttons
+@buttonColor:			@colorLink;
+@buttonHoverColor:		darken(@colorLink, 10%);
+
+// Forms
+@containerDataBackground: darken(@colorLightBorder, 5%);
+
+
+// Typography -- enable only fonts listed in the fonts.less
+// -------------------------
+@fontCrispSansRegular:		"Arial", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontCrispSansLight:		"Arial", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@fontNavigation:			"montserratregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontNavigationSub:			"montserratregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@fontSerifRegular:			'Arial', Georgia, Times, 'Times New Roman', serif;
+
+@fontHeadingsUltraLight:	"montserratultra_light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontHeadingsLight:			"montserratlight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontHeadingsMedium:		"montserratregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontHeadingsSemi:			"montserratsemi_bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontHeadingsRegular:		"montserratregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@fontHeadingSubLight:		"titillium_weblight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@fontTextRegular:			"open_sansregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontTextLight:				"open_sanslight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@fontHomeHero:				"titillium_webthin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontHomeSubhead:			"titillium_webregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontHomeSubheadSemiBold:	"titillium_websemibold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@fontHomeSubheadBold:		"titillium_webbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@bodyFont: 				@fontTextRegular;
+@headingFont: 			@fontHeadingsMedium;
+@navigationFont:  		@fontCrispSansLight;
+@subNavigationFont:  	@fontCrispSansLight;
+
+@monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
+
+@baseFontSize:          12px;
+@baseLineHeight:        20px;
+
+@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    normal;    // instead of browser default, bold
+@headingsColor:         inherit; // empty to use BS default, @textColor
+
+
+// Pre and Code
+// -------------------------
+@preBoxShadow:          0 0 0.25em rgba(0, 0, 0, 0.2);
+@preBorder:             none;
+@preBackground:         #fff;
+
+// Tables
+// -------------------------
+@tableBackground:                   transparent; // overall background-color
+@tableBackgroundAccent:             #f9f9f9; // for striping
+@tableBackgroundHover:              #f5f5f5; // for hover
+@tableBorder:                       #ddd; // table and cell border
+
+
+// Media query breaking points
+// --------------------------------------------------
+@sizeXS: 400px;
+@sizeS: 500px;
+@sizeM: 900px;
+@sizeL: 1200px;
+@sizeXL: 1600px;
+@sizeXXL: 2000px;
+
+@sizeDesktop: 1100px;
+
+// Spacing
+@padContain:			25px;
+@padContainM:			45px;
+@padContainL:			90px;
+@padContainXL:			90px;
+
+@padPopup:				40px;

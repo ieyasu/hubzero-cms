@@ -1,0 +1,91 @@
+.s-contain {
+	.contain()
+}
+
+.s-contain-less {
+	.contain-less()
+}
+
+.s-contain-wider {
+	.contain-wider()
+}
+
+.s-contain-wide {
+	.contain-wide()
+}
+
+.s-contain-full {
+	.contain-full()
+}
+
+.ckeditor-body,
+.cke_panel_container body {
+	padding: 10px;
+	min-width: inherit;
+	background: #FFF !important;
+}
+
+.ckeditor-body table {
+	border: none;
+}
+
+.ckeditor-body table th,
+.ckeditor-body table td {
+	border: 1px solid #dadada;
+}
+
+.article-info,
+.com_content .actions {
+	display: none;
+}
+
+/* [!] J2.5 Hide edit buttons etc. on com_content pages */
+.com_content ul.actions {
+	display: none;
+}
+
+// This is a hack for the taxonomy page
+// https://nanohub.org/resources/courses
+
+#taxonomy {
+	.subject {
+		margin-right: 235px;
+	}
+
+	.aside {
+		float: right;
+		width: 214px;
+
+		fieldset label {
+			padding: 0 1em;
+		}
+	}
+}
+
+form > #sub-menu {
+	//.padContain();
+	//margin-top: 2rem;
+}
+
+.supported {
+	position: relative;
+	padding-left: 20px;
+}
+.supported:before {
+	position: absolute;
+	font-family: 'Fontcons';
+	font-size: 18px;
+	line-height: 18px;
+	content: "\f04e";
+	color: #E2AA23;
+	left: 3px;
+	margin-top: -9px;
+	top: 50%;
+}
+.resources.results .supported:before {
+	left: 0;
+}
+
+.metadata .supported {
+	padding-left: 20px;
+}

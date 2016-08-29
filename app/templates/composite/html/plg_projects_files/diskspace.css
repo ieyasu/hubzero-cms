@@ -1,0 +1,7 @@
+@import url('/core/plugins/projects/files/assets/css/diskspace.css');
+
+#indicator-wrapper {
+	margin-top: 0.5em;
+	height: 1.1em;
+}
+

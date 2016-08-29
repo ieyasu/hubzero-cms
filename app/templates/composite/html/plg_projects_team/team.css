@@ -1,0 +1,9 @@
+@import url('/core/plugins/projects/team/assets/css/team.css');
+
+#setup .combine_options label {
+	margin-right: 0;
+}
+
+table.listing tbody tr.native {
+	background: none;
+}

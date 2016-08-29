@@ -1,0 +1,152 @@
+/*
+
+	-- -- -- -- -- -- --
+	intro CSS
+	-- -- -- -- -- -- --
+
+*/
+/* Intro */
+	.com_content .contentpane > .contentpaneopen {
+		padding-top: 0;
+	}
+	.com_content .contentpaneopen {
+		padding: 0;
+	}
+	body #introduction {
+		background: #f1f1f1;
+		position: relative;
+	}
+	#introduction small.intro-before,
+	#introduction small.intro-after,
+	#introduction:before,
+	#introduction:after {
+		content: "";
+		display: none;
+	}
+	#introduction h3 {
+		margin-top: 0;
+		color: #666;
+	}
+	#introduction ul,
+	#introduction li {
+		list-style: none;
+		margin: 1em 0;
+		padding: 0;
+	}
+	#introduction li {
+		margin: 0.5em 0;
+		padding: 0;
+	}
+
+	section .heading{
+		text-align:center;
+		margin:3rem 0 2.1rem;
+	}
+	section .heading h2{
+		font-size:2rem;
+		letter-spacing:0;
+		margin:0;
+		text-transform:uppercase;
+		color:#2c3035;
+	}
+
+/* Four Columns */
+	.com_content .four {
+		border-top: 1px solid #e0e0d7;
+		margin-bottom: 3em;
+	}
+	.com_content .four h3 { 
+		color: #000; 
+		margin-top: 1em; 
+		padding-top: 0em;
+	}
+	.com_content .four h3 a { 
+		color: #000; 
+		border-bottom: none; 
+	}
+	.com_content .four ul {
+		margin: 1em 0;
+	}
+	.com_content .four li {
+		margin: 1em 0;
+	}
+	.com_content .four ul.focus {
+		list-style: none;
+		margin: 1em 0;
+		padding: 0;
+	}
+	.com_content .four ul.focus li {
+		margin: 0 0 0.5em 0;
+		padding: 0 0 0 15px;
+		background: transparent url("../images/bullets/arrow.gif") 0 0.5em no-repeat;
+	}
+	.com_content .first h2 { 
+		font-weight: normal;
+		margin: 0;
+		padding: 0.5em 0 0 0;
+		line-height: 1em;
+		border-top: 2px solid #e0e0d7;
+	}
+	.com_content .first h2 abbr {
+		border: none;
+	} 
+	.com_content .second {
+	}
+	.com_content .third {
+	}
+	.com_content .fourth { 
+		border-right: none;
+	}
+	.com_content .big {
+		height: 3em;
+	}
+	.com_content .four {
+		margin-bottom: 3em;
+	}
+	.four .search { padding-left: 28px; background: url("../images/search.gif") 0 0.2em no-repeat; }
+	.four .browse { padding-left: 28px; background: url("../images/browse.gif") 0 0.2em no-repeat; }
+	.com_content .browse a {
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+	.emphasized {
+		margin: 0em 0 0 0;
+		padding: 0;
+	}
+	.emphasized a {
+		margin: 0;
+		padding: 0.7em;
+		display: block;
+		width: 175px;
+		color: #fff;
+		text-align: center;
+		border: 1px solid #333;
+		font-weight: bold;
+		background: #333;
+		/* Rounded corners */
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		-khtml-border-radius: 5px;
+		border-radius: 5px;
+	}
+	.emphasized span {
+		margin: 0;
+		padding: 0.7em;
+		display: block;
+		width: 175px;
+		color: #fff;
+		text-align: center;
+		border: 1px solid #999;
+		font-weight: normal;
+		background: #999;
+		/* Rounded corners */
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		-khtml-border-radius: 5px;
+		border-radius: 5px;
+	}
+	.emphasized a:hover {
+		color: #fff;
+		border: 1px solid #fff;
+		background: #e7792c;
+	}

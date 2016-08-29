@@ -1,0 +1,9 @@
+@import url("../../../../../core/components/com_wiki/site/assets/css/wiki.css");
+
+.page-search-form {
+	width: 250px;
+}
+
+.wikipage {
+	padding: 0;
+}

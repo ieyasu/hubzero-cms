@@ -1,0 +1,18 @@
+@import url('/core/plugins/members/collections/assets/css/collections.css');
+
+p.overview, fieldset.filters {
+	margin: 0 -20px 20px -20px;
+}
+
+ul.sub-menu {
+	margin: 0 0 20px 0;
+}
+
+p.overview, fieldset.filters {
+	margin: 0 0 20px 0;
+}
+
+.post .actions>span, .post .actions a {
+	padding: 0.5em .5em;
+	margin: 0.5em 1px 0;
+}

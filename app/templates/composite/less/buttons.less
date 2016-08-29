@@ -1,0 +1,323 @@
+// Inherit core styles
+//@import "../../../assets/less/buttons.less";
+
+//
+// Buttons
+// --------------------------------------------------
+
+
+// Base styles
+.btn,
+a.btn,
+input[type=submit] {
+	width: auto;
+	.background-clip(padding-box);
+	font-size: 1rem;
+	padding: 0.4rem 1rem;
+	display: inline-block;
+	.ie7-inline-block();
+	outline: none;
+	border: 0;
+	border-left: none;
+	cursor: pointer;
+	background: @buttonColor;
+	color: #fff;
+	.transition();
+	vertical-align: middle; //baseline;
+	line-height: 1em;
+
+	&:active,
+	&:visited {
+		color: #fff;
+	}
+
+	&:hover {
+		background: @buttonHoverColor;
+		color: #fff;
+	}
+
+	// Disabled state
+	&.disabled,
+	&[disabled] {
+		cursor: default;
+		background-image: none;
+		.opacity(65);
+	}
+
+	// secondary button
+	&.btn-secondary {
+		color: #78858C;
+		background: transparent;
+
+		&:hover {
+			background: #4fa3b5;
+			color: #fff;
+			border: 1px solid #4fa3b5;
+		}
+	}
+
+	&.skeleton {
+		background: transparent;
+		color:  @buttonColor;
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+		border: 1px solid @buttonColor;
+
+		&:before {
+			.stretch();
+			background: @buttonColor;
+			z-index: -1;
+			.transform(translate(-100%) rotate(45deg));
+			.transition(all 0.3s cubic-bezier(0.13, 1.1, 0.79, 0.96));
+		}
+
+		&:hover {
+			color: #fff;
+
+			&:before {
+				.transform(translate(0) rotate(0deg));
+			}
+		}
+
+		&.on-dark {
+			border-color: #fff;
+			color: #fff;
+
+			&:before {
+				background: #fff;
+			}
+
+			&:hover {
+				color: @buttonColor;
+			}
+		}
+	}
+}
+
+#primary-document .btn {
+	padding: 1rem 2rem;
+}
+
+// Cross-browser Jank
+// --------------------------------------------------
+
+button.btn,
+input[type="submit"].btn {
+	// Firefox 3.6 only I believe
+	&::-moz-focus-inner {
+		padding: 0;
+		border: 0;
+	}
+}
+
+#page_options .btn:before {
+	background: transparent;
+}
+
+a.btn-primary,
+.btn-primary {
+
+}
+
+a.btn-primary:hover,
+.btn-primary:hover {
+
+}
+
+.btn-success {
+
+}
+
+#page_options .edit:before {
+	content: "";
+	margin-right: 0;
+}
+
+#content #system-message {
+	margin: 0 0 30px 0;
+}
+
+#content .section #system-message {
+	margin: 0 0 30px 0;
+}
+
+// Button group
+.btn-group {
+	position: relative;
+	display: inline-block;
+	.ie7-inline-block();
+	font-size: 0; // remove as part 1 of font-size inline-block hack
+	vertical-align: middle; // match .btn alignment given font-size hack above
+	white-space: nowrap; // prevent buttons from wrapping when in tight spaces (e.g., the table on the tests page)
+	.ie7-restore-left-whitespace();
+
+	.btn {
+		display: inline-block;
+		.ie7-inline-block();
+		padding: 0.7em 0.91em 0.7em 0.91em;
+		margin-bottom: 0; // For input.btn
+		line-height: 1;
+		outline: 0;
+		text-align: center;
+		white-space: nowrap;
+		word-wrap: normal;
+		vertical-align: middle;
+		cursor: pointer;
+		position: relative;
+		//border: 1px solid @btnBorder;
+		*border: 0; // Remove the border to prevent IE7's black border on input:focus
+		//border-right-color: darken(@btnBorder, 10%);
+		//border-bottom-color: darken(@btnBorder, 10%);
+		.background-clip(padding-box);
+		//.box-sizing(border-box);
+		.ie7-restore-left-whitespace(); // Give IE7 some love
+		//.box-shadow(~"inset 0 0 1px #fff");
+	}
+}
+.btn-group + .btn-group {
+	margin-left: 0.2em;
+}
+.btn-group > .btn {
+	position: relative;
+	.border-radius(0);
+}
+.btn-group > .btn + .btn {
+	//margin-left: -1px;
+}
+.btn-group > .btn,
+.btn-group > .dropdown-menu,
+.btn-group > .popover {
+	font-size: 0.9rem; // redeclare as part 2 of font-size inline-block hack
+}
+
+.btn-group.btn-secondary > .btn,
+.btn-group.btn-secondary > .dropdown-menu,
+.btn-group.btn-secondary > .popover {
+	font-size: @fontSizeSmall;
+}
+.btn-group.btn-secondary > .btn {
+	padding: 0.55em 0.66em 0.55em 0.66em;
+}
+
+.btn-group > .btn:first-child {
+	margin-left: 0;
+	.border-radius(@baseBorderRadius 0 0 @baseBorderRadius);
+}
+.btn-group > .btn:last-child,
+.btn-group > .dropdown-toggle {
+	.border-radius(0 @baseBorderRadius @baseBorderRadius 0);
+}
+
+.btn-group > .btn:hover,
+.btn-group > .btn:focus,
+.btn-group > .btn:active,
+.btn-group > .btn.active {
+	z-index: 2;
+}
+
+.btn-group .dropdown-toggle:active,
+.btn-group.open .dropdown-toggle {
+	outline: 0;
+}
+
+.btn-group > .btn + .dropdown-toggle {
+	padding-left: 8px;
+	padding-right: 8px;
+	//.box-shadow(~"inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
+	border-left: 1px solid transparent;
+}
+
+.btn-group:hover .dropdown-toggle,
+.btn-group.open .dropdown-toggle {
+	.box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
+}
+
+/*.btn-group span.dropdown-toggle {
+	height: 2.5em;
+	height: 2.55em\9;
+}
+@-moz-document url-prefix() {
+	.btn-group span.dropdown-toggle {
+		height: 2.6em;
+	}
+}
+.btn-group.btn-secondary span.dropdown-toggle {
+	height: 2.25em;
+	height: 2.275em\9;
+}*/
+
+.btn-group span.dropdown-toggle:before,
+.btn .caret {
+	margin-top: 0.4em;
+	margin-left: 0;
+	display: inline-block;
+	width: 0;
+	height: 0;
+	vertical-align: top;
+	border-top: 4px solid #fff;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	content: "";
+}
+.btn-group.dropup span.dropdown-toggle:before {
+	border-bottom: 4px solid #fff;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	border-top: none;
+}
+
+.btn-group .dropdown-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	z-index: @zindexDropdown;
+	display: none;
+	float: left;
+	text-align: left;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 0;
+	list-style: none;
+	background-color: @dropdownBackground;
+	//border: 1px solid #ccc; // Fallback for IE7-8
+	//border: 1px solid @dropdownBorder;
+	//.border-radius(6px);
+	.box-shadow(0px 1px 30px rgba(0,0,0,0.04));
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+}
+.dropup .dropdown-menu {
+	top: auto;
+	bottom: 100%;
+}
+
+.btn-group .dropdown-toggle:hover + .dropdown-menu,
+.btn-group:hover .dropdown-menu,
+.open > .dropdown-menu {
+	display: block;
+}
+.btn-group > .btn:first-child:hover .dropdown-menu,
+.btn-group:hover > .btn:first-child:hover + .dropdown-toggle + .dropdown-menu {
+	display: none;
+}
+.btn-group:hover > .btn:first-child:hover + .dropdown-toggle {
+	box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+.dropdown-menu .divider {
+	height: 1px;
+	margin: 9px 1px;
+	overflow: hidden;
+	background-color: #e5e5e5;
+	border-bottom: 1px solid #ffffff;
+}
+.dropdown-menu > li > a {
+	display: block;
+	padding: 0.2em 1em;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.5em;
+	border: none;
+}
+

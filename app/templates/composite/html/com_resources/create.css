@@ -1,0 +1,27 @@
+@import url("/core/components/com_resources/site/assets/css/create.css");
+/* not yet supported
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+*/
+#license-preview {
+  margin-top: 0.5rem;
+}
+#preview-header,
+#preview-pane {
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  border: none;
+}
+#preview-header {
+  letter-spacing: 0;
+  margin-top: 2rem;
+  padding: 1em 1em 0;
+  font-family: "montserratregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  color: #696969;
+}

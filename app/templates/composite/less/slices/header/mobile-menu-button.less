@@ -1,0 +1,179 @@
+// Mobile menu button namespaced mixin
+
+#mobile-menu-button {
+
+	// *******************************************************
+	// Base styles mixin
+	.base() {
+		.menu-button {
+			position: absolute;
+			top: @headerPdT + @hubLogoH / 2;
+			right: 0;
+			.padContainRight();
+			z-index: 955;
+			text-transform: uppercase;
+			font-size: 0.9rem;
+			cursor: pointer;
+			.transition(all 0.5s ease-out);
+			.translate(0, -50%);
+
+			&>span {
+				display: block;
+				overflow: hidden;
+				margin-left: 8px;
+				max-width: 300px;
+				line-height: @menuButtonTextLineH;
+				color: @colorNav;
+				.transition(all ease .4s);
+				font-family: @fontHeadingsRegular;
+			}
+
+			button.icon {
+				display: block;
+				position: absolute;
+				top: 0rem;
+				overflow: hidden;
+				right: 100%;
+				margin: 0;
+				padding: 0;
+				width: 1rem;
+				height: @menuButtonTextLineH;
+				font-size: 0;
+				border: none;
+				cursor: pointer;
+				background: none;
+				outline: none;
+				.transition(width ease .1s);
+
+				:focus {
+					outline: none;
+				}
+
+				span {
+					position: absolute;
+					display: block;
+					top: @menuButtonTextLineH / 2 - @menuButtonLineH / 2;
+					left: 0;
+					width: 100%;
+					height: @menuButtonLineH;
+					background-color: @colorNav;
+					margin: 0;
+				}
+
+				&:before,
+				&:after {
+					position: absolute;
+					display: block;
+					top: 0.2rem;
+					left: 0;
+					width: 100%;
+					height: @menuButtonLineH;
+					background-color: @colorNav;
+					content: "";
+					.transition(all linear .1s);
+				}
+
+				&:after {
+					top: auto;
+					bottom: 0.2rem;
+				}
+			}
+
+			// Menu button hover
+			&:hover {
+
+				&>span {
+					//margin-left: 5px;
+				}
+
+				button.icon {
+					width:  1.6rem;
+
+					&:before {
+						//top: 0;
+					}
+
+					&:after {
+						//bottom: 0;
+					}
+				}
+			}
+
+			@media (min-width: @sizeDesktop) {
+				display: none;
+			}
+		}
+	}
+
+	// *******************************************************
+	// On top styles mixin
+	.onTop() {
+		.menu-button {
+			&>span {
+				color: #FFF;
+			}
+
+			button.icon {
+				span {
+					background-color: #FFF;
+				}
+
+				&:before,
+				&:after {
+					background-color: #FFF;
+				}
+			}
+		}
+
+		@media (min-height: @expandHeaderAtLeastHeight) {
+			.menu-button {
+				top: @headerPdTSpace + @hubLogoH / 2;
+			}
+		}
+	}
+
+	// *******************************************************
+	// Panel open mixin
+	.panel-open() {
+		.menu-button {
+
+			&>span {
+				max-width: 0;
+				margin: 0;
+			}
+
+			button.icon {
+				span {
+					display: none;
+				}
+				&:before,
+				&:after {
+					background-color: @colorNav;
+				}
+				&:before {
+					.rotate(45deg);
+					top: @menuButtonTextLineH / 2 - @menuButtonLineH / 2;
+				}
+
+				&:after {
+					.rotate(-45deg);
+					bottom: auto;
+					top: @menuButtonTextLineH / 2 - @menuButtonLineH / 2;
+				}
+
+				&:hover {
+					&:before {
+						top: @menuButtonTextLineH / 2 - @menuButtonLineH / 2;
+						.rotate(0deg);
+					}
+
+					&:after {
+						bottom: auto;
+						top: @menuButtonTextLineH / 2 - @menuButtonLineH / 2;
+						.rotate(0deg);
+					}
+				}
+			}
+		}
+	}
+}

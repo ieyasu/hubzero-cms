@@ -1,0 +1,7 @@
+@import url("/core/components/com_whatsnew/site/assets/css/whatsnew.css");
+.com_whatsnew .container-block h3 {
+  border: none;
+}
+ol.entries {
+  border: none;
+}

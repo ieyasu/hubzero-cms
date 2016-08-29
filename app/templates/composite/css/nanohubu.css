@@ -1,0 +1,241 @@
+.super-group-bar {
+	background: #0d0b0c;
+	height: 44px;
+	position: relative;
+}
+.super-group-bar .poweredby {
+	display: inline-block;
+	margin: 5px 0 0 20px;
+	padding: 0;
+	text-indent: -999px;
+	height: 35px;
+	width: 183px;
+	background: url("/app/site/images/groups/powered-by-nanohub.png") top no-repeat;
+	border: none;
+}
+.super-group-bar #account {
+	margin: 0 20px 0 0;
+}
+.super-group-bar #account ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.super-group-bar #account ul li {
+	margin: 0;
+	padding: 0;
+	float: right;
+	border-right: 1px solid #999;
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	position: relative;
+}
+.super-group-bar #account ul li a {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	font-size: 13px;
+	line-height: 16px;
+	padding: 14px 20px;
+	border: none;
+	color: #FFF;
+}
+.super-group-bar #account ul li a:hover {
+	color: #FFF;
+}
+.super-group-bar #account #account-info {
+	padding: 0;
+	border-left: none;
+}
+.super-group-bar #account #account-info:after {
+	top: 20px;
+	right: 15px;
+	border-width: 4px 4px 0 4px;
+}
+.super-group-bar #account a.account-details {
+	display: block;
+	padding: 0 35px 0 15px;
+	margin: 0;
+}
+.super-group-bar #account a.account-details img {
+	width: 24px;
+	margin: 10px 10px 0 0;
+	border-radius: 10%;
+}
+.super-group-bar #account a.account-details .account-name {
+	display: inline-block;
+	padding: 14px 0;
+	color: #fff;
+}
+.super-group-bar #account a.account-details .account-email {
+	margin: 0;
+	display: inline-block;
+	font-size: 0.9em;
+	color: #aaa;
+}
+.super-group-bar #account ul ul {
+	width: 100%;
+	background: #0d0b0c;
+}
+.super-group-bar #account ul ul li {
+	float: none;
+	border-left: none;
+	border-right: none;
+	margin-right: 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.super-group-bar #account ul ul li a {
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	-ms-transition: none;
+	transition: none;
+	font-size: 12px;
+	color: #efefef;
+	padding: 0.8em 1em;
+}
+.super-group-bar #account ul ul li a:hover {
+	color: #FFF;
+}
+.super-group-bar #account ul ul li a:before {
+	color: #fff;
+}
+
+
+
+#account {
+	float: right;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 798;
+	font-size: 12px;
+}
+#account li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	float: left;
+	line-height: 1.3em;
+	vertical-align: middle;
+	zoom: 1;
+}
+#account li>a {
+	display: block;
+	border: none;
+	color: #747474;
+	padding: 1.675em 1em;
+	font-size: 1.3em;
+	border-left: 1px dashed #ddd;
+}
+#account li>a:hover,
+#account li>a:focus,
+#account a:hover,
+#account a:focus { 
+	color: #111;
+}
+#account .account-details {
+	color: #555;
+	border: none;
+}
+#account #account-info {
+	padding: 1.5em 3.25em 1.5em 1.675em;
+	white-space: nowrap;
+	border-left: 1px dashed #ddd;
+	max-width: 30em;
+}
+#account #account-info:after {
+	content: "";
+	border-color: #E5E5E5 transparent transparent transparent;
+	border-style: solid dashed dashed dashed;
+	border-width: 6px 6px 0 6px;
+	height: 0;
+	width: 0;
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	top: 1.5em;
+	right: 1.675em;
+}
+
+#account.loggedin {
+	cursor: pointer;
+}
+
+#account img {
+	float: left;
+	margin: 0 0.5em 0 0;
+	-webkit-border-radius: 0.25em;
+	   -moz-border-radius: 0.25em;
+	    -ms-border-radius: 0.25em;
+	     -o-border-radius: 0.25em;
+	        border-radius: 0.25em;
+}
+#account span.account-email {
+	display: block;
+	color: #bbb;
+	font-size: 85%;
+	margin-right: 3em;
+}
+#account li ul {
+	background: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	border-top: none;
+	position: absolute;
+	visibility: hidden;
+	width: 200px;
+	right: 0px;
+	top: 100%;
+}
+#account li:hover > ul,
+#account li:focus > ul {
+	visibility: visible;
+}
+#account li ul li {
+	float: none;
+	border: none;
+	border-top: 1px solid #eee;
+}
+#account li ul li a {
+	display: block;
+	color: #747474;
+	position: relative;
+	font-size: 1em;
+	border: none;
+	padding: 0.8em 1em;
+}
+#account li ul li a:hover,
+#account li ul li a:focus {
+	background-color: #178bc1;
+	color: #fff;
+	margin: 0 -2px;
+}
+
+#account li ul li a:before {
+	content: "";
+	display: inline-block;
+	font-family: 'Fontcons';
+	font-size: 1.2em;
+	width: 1em;
+	height: 1em;
+	margin-right: 0.2em;
+}
+#account li ul li#account-dashboard a:before {
+	content: "\f009";
+}
+#account li ul li#account-profile a:before {
+	content: "\f007";
+}
+#account li ul li#account-messages a:before {
+	content: "\2709";
+}
+#account li ul li#account-logout a:before {
+	content: "\f011";
+}
+
+.collector {
+	display: none;
+}
