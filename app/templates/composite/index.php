@@ -125,27 +125,18 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 									<ul>
 									<?php if (!User::isGuest()) { ?>
 										<li class="user-account loggedin" id="account">
-											<?php
-											$profile = \Hubzero\User\Profile::getInstance(User::get('id'));
-											$pic = $profile->getPicture();
-											if ($pic == '/core/components/com_members/site/assets/img/profile_thumb.gif')
-											{
-												// no picture
-												$pic = false;
-											}
-											?>
 											<a class="user-account-link loggedin" href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>">
-												Logged in
+												Logged in (<?php echo User::get('username'); ?>)
 											</a>
 											<div class="account-details">
 												<div class="user-info">
 													<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>" class="cf">
-																		<span class="user-image">
-																			<img src="<?php echo $profile->getPicture(); ?>" alt="<?php echo User::get('name'); ?>" />
-																		</span>
+														<span class="user-image">
+															<img src="<?php echo User::picture(); ?>" alt="<?php echo User::get('name'); ?>" />
+														</span>
 
 														<p>
-															<span class="account-name"><?php echo stripslashes(User::get('name')) . ' (' . stripslashes(User::get('username')) . ')'; ?></span>
+															<span class="account-name"><?php echo stripslashes(User::get('name')); ?></span>
 															<span class="account-email"><?php echo User::get('email'); ?></span>
 														</p>
 													</a>
@@ -419,7 +410,7 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 						</ul>
 
 						<div class="copy">
-							<p>Copyright © <?php echo date('Y'); ?> cdmHUB</p>
+							<p>Copyright &copy; <?php echo date('Y'); ?> <?php echo Config::get('sitename'); ?></p>
 						</div>
 					</section>
 				</footer>

@@ -89,60 +89,64 @@ Lang::load('tpl_' . $this->template, __DIR__);
 									</div>
 
 									<ul>
+									<?php if (!User::isGuest()) { ?>
 										<li class="user-account loggedin" id="account">
-											<?php if (!User::isGuest()) { ?>
-												<?php
-												$profile = \Hubzero\User\Profile::getInstance(User::get('id'));
-												$pic = $profile->getPicture();
-												if ($pic == '/core/components/com_members/site/assets/img/profile_thumb.gif')
-												{
-													// no picture
-													$pic = false;
-												}
-												?>
-												<a class="user-account-link loggedin" href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>">
-													Logged in
-												</a>
-												<div class="account-details">
-													<div class="user-info">
-														<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>" class="cf">
-																		<span class="user-image">
-																			<img src="<?php echo $profile->getPicture(); ?>" alt="<?php echo User::get('name'); ?>" />
-																		</span>
+											<a class="user-account-link loggedin" href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>">
+												Logged in (<?php echo User::get('username'); ?>)
+											</a>
+											<div class="account-details">
+												<div class="user-info">
+													<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>" class="cf">
+														<span class="user-image">
+															<img src="<?php echo User::picture(); ?>" alt="<?php echo User::get('name'); ?>" />
+														</span>
 
-															<p>
-																<span class="account-name"><?php echo stripslashes(User::get('name')) . ' (' . stripslashes(User::get('username')) . ')'; ?></span>
-																<span class="account-email"><?php echo User::get('email'); ?></span>
-															</p>
-														</a>
-													</div>
-													<ul>
-														<li id="account-dashboard">
-															<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id') . '&active=dashboard'); ?>"><span><?php echo Lang::txt('TPL_ACCOUNT_DASHBOARD'); ?></span></a>
-														</li>
-														<li id="account-profile">
-															<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id') . '&active=profile'); ?>"><span><?php echo Lang::txt('TPL_ACCOUNT_PROFILE'); ?></span></a>
-														</li>
-														<li id="account-logout">
-															<a href="<?php echo Route::url('index.php?option=com_users&view=logout'); ?>"><span><?php echo Lang::txt('TPL_LOGOUT'); ?></span></a>
-														</li>
-													</ul>
+														<p>
+															<span class="account-name"><?php echo stripslashes(User::get('name')); ?></span>
+															<span class="account-email"><?php echo User::get('email'); ?></span>
+														</p>
+													</a>
 												</div>
-											<?php } else { ?>
-												<a href="<?php echo Route::url('index.php?option=com_users&view=login'); ?>" title="<?php echo Lang::txt('TPL_LOGIN'); ?>" class="user-account-link loggedout"><?php echo Lang::txt('Login'); ?></a>
-											<?php } ?>
+												<ul>
+													<li id="account-dashboard">
+														<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id') . '&active=dashboard'); ?>"><span><?php echo Lang::txt('TPL_ACCOUNT_DASHBOARD'); ?></span></a>
+													</li>
+													<li id="account-profile">
+														<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id') . '&active=profile'); ?>"><span><?php echo Lang::txt('TPL_ACCOUNT_PROFILE'); ?></span></a>
+													</li>
+													<li id="account-logout">
+														<a href="<?php echo Route::url('index.php?option=com_users&view=logout'); ?>"><span><?php echo Lang::txt('TPL_LOGOUT'); ?></span></a>
+													</li>
+												</ul>
+											</div>
 										</li>
+									<?php } else { ?>
+										<li>
+											<a href="<?php echo Route::url('index.php?option=com_users&view=login'); ?>" title="<?php echo Lang::txt('TPL_LOGIN'); ?>" class="user-account-link loggedout"><?php echo Lang::txt('TPL_LOGIN'); ?></a>
+										</li>
+										<li>
+											<a href="<?php echo Route::url('index.php?option=com_members&view=register'); ?>" title="<?php echo Lang::txt('TPL_SIGNUP'); ?>" class="user-account-link"><?php echo Lang::txt('TPL_SIGNUP'); ?></a>
+										</li>
+									<?php } ?>
+									<?php //if ($this->countModules('helppane')) : ?>
+										<li class="subnav-helpme helpme">
+											<a href="<?php echo Route::url('index.php?option=com_support'); ?>" title="<?php echo Lang::txt('Help'); ?>"><!-- set module REPORTPROBLEMS parameter to have it work with .helpme -->
+												<span><?php echo Lang::txt('Help'); ?></span>
+											</a>
+										</li>
+									<?php //endif; ?>
 
 										<li class="subnav-search"><a href="/search">Search</a></li>
+									</ul>
 
-										<?php if (false && $this->countModules('helppane')) : ?>
-											<!-- set module REPORTPROBLEMS parameter to have it work with .helpme -->
-											<div class="subnav-helpme helpme">
-												<a href="<?php echo Route::url('index.php?option=com_support'); ?>" title="<?php echo Lang::txt('Help'); ?>">
-													<span><?php echo Lang::txt('Help'); ?></span>
-												</a>
-											</div>
-										<?php endif; ?>
+									<?php if (false && $this->countModules('helppane')) : ?>
+										<!-- set module REPORTPROBLEMS parameter to have it work with .helpme -->
+										<div class="subnav-helpme helpme">
+											<a href="<?php echo Route::url('index.php?option=com_support'); ?>" title="<?php echo Lang::txt('Help'); ?>">
+												<span><?php echo Lang::txt('Help'); ?></span>
+											</a>
+										</div>
+									<?php endif; ?>
 								</div>
 
 								<div class="all-nav-main site-navigation">
@@ -163,7 +167,7 @@ Lang::load('tpl_' . $this->template, __DIR__);
 					<span class="breadcrumbs pathway"><a href="/" class="pathway">Home</a> <span class="sep">/</span> <span>Error</span></span>
 				</div>
 
-				<div id="content" class="<?php echo Request::getVar('option', ''); ?>" role="main">
+				<div id="content" class="<?php echo Request::getCmd('option', ''); ?>" role="main">
 					<div class="inner">
 						<div class="content">
 							<div id="content-header">
@@ -213,7 +217,7 @@ Lang::load('tpl_' . $this->template, __DIR__);
 						</ul>
 
 						<div class="copy">
-							<p>Copyright &copy; <?php echo date('Y'); ?> cdmHUB</p>
+							<p>Copyright &copy; <?php echo date('Y'); ?> <?php echo Config::get('sitename'); ?></p>
 						</div>
 					</section>
 				</footer>
