@@ -68,6 +68,13 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 	<head>
 		<meta name="viewport" content="width=device-width" />
 		<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> Doesn't validate... -->
+		
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/manifest.json">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="theme-color" content="#ffffff">
 
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo \Hubzero\Document\Assets::getSystemStylesheet(); ?>" />
 
@@ -125,18 +132,27 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 									<ul>
 									<?php if (!User::isGuest()) { ?>
 										<li class="user-account loggedin" id="account">
+											<?php
+											$profile = \Hubzero\User\Profile::getInstance(User::get('id'));
+											$pic = $profile->getPicture();
+											if ($pic == '/core/components/com_members/site/assets/img/profile_thumb.gif')
+											{
+												// no picture
+												$pic = false;
+											}
+											?>
 											<a class="user-account-link loggedin" href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>">
-												Logged in (<?php echo User::get('username'); ?>)
+												Logged in
 											</a>
 											<div class="account-details">
 												<div class="user-info">
 													<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>" class="cf">
-														<span class="user-image">
-															<img src="<?php echo User::picture(); ?>" alt="<?php echo User::get('name'); ?>" />
-														</span>
+																		<span class="user-image">
+																			<img src="<?php echo $profile->getPicture(); ?>" alt="<?php echo User::get('name'); ?>" />
+																		</span>
 
 														<p>
-															<span class="account-name"><?php echo stripslashes(User::get('name')); ?></span>
+															<span class="account-name"><?php echo stripslashes(User::get('name')) . ' (' . stripslashes(User::get('username')) . ')'; ?></span>
 															<span class="account-email"><?php echo User::get('email'); ?></span>
 														</p>
 													</a>
@@ -410,7 +426,7 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 						</ul>
 
 						<div class="copy">
-							<p>Copyright &copy; <?php echo date('Y'); ?> <?php echo Config::get('sitename'); ?></p>
+							<p>Copyright © <?php echo date('Y'); ?> cdmHUB</p>
 						</div>
 					</section>
 				</footer>
