@@ -68,7 +68,7 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 	<head>
 		<meta name="viewport" content="width=device-width" />
 		<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> Doesn't validate... -->
-		
+
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
@@ -142,7 +142,7 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 											}
 											?>
 											<a class="user-account-link loggedin" href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>">
-												Logged in
+												Logged in (<?php echo stripslashes(User::get('username')); ?>)
 											</a>
 											<div class="account-details">
 												<div class="user-info">
