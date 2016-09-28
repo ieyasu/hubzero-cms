@@ -146,13 +146,13 @@ $this->view('_topmenu', 'projects')
 				<div class="col span9 main-col">
 					<?php } ?>
 					<?php if ($this->content) { echo $this->content; } ?>
-					<?php if ($this->active == 'info') {
+					<?php /*if ($this->active == 'info') {
 							// Display project info
 							$this->view('_info')
 							     ->set('model', $this->model)
 							     ->set('option', $this->option)
 							     ->display();
-					 } ?>
+					 }*/ ?>
 					<?php if ($sideContent) { ?>
 				</div>
 				<div class="col span3 omega side-col">
