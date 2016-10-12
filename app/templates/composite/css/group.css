@@ -13,6 +13,23 @@
     -It should include a bar at the top branded for the HUB
     -It should include the help pane incase a super group template wanted to use it
  */
+section.section .aside:before,
+section.section .aside:after {
+	display: none;
+}
+
+#account li ul {
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	border-top: none;
+	position: absolute;
+	visibility: hidden;
+	right: 0px;
+	top: 100%;
+}
+#account li:hover > ul,
+#account li:focus > ul {
+	visibility: visible;
+}
 
 /* Group Bar */
 .super-group-bar {
