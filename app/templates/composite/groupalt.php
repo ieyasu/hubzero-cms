@@ -127,7 +127,7 @@ $membership_control = $params->get('membership_control', 1);
 							<a href="javascript:void(0);" class="pending toggle">
 								<span><?php echo Lang::txt('TPL_SYSTEM_GROUP_PENDING'); ?></span>
 							</a>
-						<?php elseif ($group->get('join_policy') == 3) : ?>
+						<?php /*elseif ($group->get('join_policy') == 3) : ?>
 							<a href="javascript:void(0);" class="closed">
 								<span><?php echo Lang::txt('TPL_SYSTEM_GROUP_CLOSED'); ?></span>
 							</a>
@@ -143,7 +143,7 @@ $membership_control = $params->get('membership_control', 1);
 							<a href="<?php echo Route::url('index.php?option=com_groups&cn='.$group->get('cn').'&task=join'); ?>" class="open">
 								<span><?php echo Lang::txt('TPL_SYSTEM_GROUP_JOIN'); ?></span>
 							</a>
-						<?php endif; ?>
+						<?php */endif; ?>
 					</div>
 
 					<div id="account" role="navigation">
