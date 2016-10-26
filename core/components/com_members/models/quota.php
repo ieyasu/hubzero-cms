@@ -31,6 +31,8 @@
 
 namespace Components\Members\Models;
 
+require_once JPATH_BASE.'/core/components/com_members/models/member.php';
+
 use Hubzero\Database\Relational;
 use Components\Members\Models\Quota\Category;
 use Components\Members\Models\Quota\Log;
