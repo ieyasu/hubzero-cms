@@ -37,8 +37,6 @@ Html::behavior('framework', true);
 Html::behavior('modal');
 
 $this->addScript($this->baseurl . '/templates/' . $this->template . '/js/hub.js?v=' . filemtime(__DIR__ . '/js/hub.js'));
-$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/slick.js');
-$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/greensock/TweenMax.min.js');
 
 $menu = App::get('menu');
 $isFrontPage = ($menu->getActive() == $menu->getDefault());
@@ -46,9 +44,12 @@ $isFrontPage = ($menu->getActive() == $menu->getDefault());
 // Index page files only
 if ($isFrontPage)
 {
-	$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/jquery.flexslider-min.js');
-	$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/ScrollMagic.min.js');
-	$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/animation.gsap.min.js');
+	$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/home.js');
+	//$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/slick.js');
+	//$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/greensock/TweenMax.min.js');
+	//$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/jquery.flexslider-min.js');
+	//$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/ScrollMagic.min.js');
+	//$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/vendor/animation.gsap.min.js');
 	$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/home.js?v=' . filemtime(__DIR__ . '/js/home.js'));
 }
 
@@ -81,16 +82,6 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 		<jdoc:include type="head" />
 
 		<!--[if lt IE 9]><script type="text/javascript" src="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/js/html5.js"></script><![endif]-->
-
-		<?php
-		if ($isFrontPage)
-		{
-		?>
-			<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/slick.css" />
-			<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/slick-theme.css" />
-		<?php
-		}
-		?>
 
 		<!--[if IE 10]><link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/browser/ie10.css" /><![endif]-->
 		<!--[if IE 9]><link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/browser/ie9.css" /><![endif]-->

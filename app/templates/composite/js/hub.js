@@ -266,7 +266,7 @@ jQuery(document).ready(function(jq) {
 		HUB.template.searchTrigger.removeClass('show');
 		HUB.template.searchPanel.removeClass('open');
 	};
-	
+
 	// Main Navigation Menu
 	HUB.template.menuTrigger = $('.menu-button');
 	HUB.template.menuPanel = $('.all-nav');
@@ -300,7 +300,6 @@ jQuery(document).ready(function(jq) {
 		tween
 			.to(HUB.template.header.allNav, 0, {display: 'block', x: '-100%'})
 			.to(HUB.template.header.allNav, 0.2, {x: '0%'});
-		;
 	};
 
 	HUB.template.closeMenuPanel = function() {
@@ -482,7 +481,7 @@ jQuery(document).ready(function(jq) {
 			var moveTo = $('#content .inner .content');
 			moveHeader.detach().addClass('content-header').prependTo(moveTo);
 		}
-	}
+	};
 
 	// Fix the height of the page top background element
 	HUB.template.updatePageTop = function() {
