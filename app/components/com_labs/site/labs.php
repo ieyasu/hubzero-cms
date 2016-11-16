@@ -160,22 +160,27 @@ class Controller {
 	}
 
 	public function join($rest) {
+		error_log('ocs join');
 		$app = array_shift($rest);
 		$sth = $this->dbh->prepare('SELECT transport_key, add_group FROM #__labs WHERE name = :app');
 		$sth->execute([':app' => $app]);
 		if (!($lab = $sth->fetch())) {
+			error_log('lab not found: '.$app);
 			throw new NotFoundError;
 		}
 		if (!isset($_POST['key']) || $_POST['key'] !== $lab['transport_key']) {
+			error_log('key mismatch');
 			throw new ForbiddenError;
 		}
 		$sth = $this->dbh->prepare('SELECT id FROM #__users WHERE username = :name LIMIT 1');
 		$sth->execute([ ':name' => $_POST['username'] ]);
 		$uid = null;
 		if (($row = $sth->fetch())) {
+			error_log('user exists');
 			$uid = $row['id'];
 		}
 		else {
+			error_log('create user');
 			$usersConfig = Component::params('com_users');
 			$newUsertype = $usersConfig->get('new_usertype');
 			if (!$newUsertype) {
@@ -187,6 +192,7 @@ class Controller {
 				$db->setQuery($query);
 				$newUsertype = $db->loadResult();
 			}
+			error_log('new user type: '.$newUsertype);
 
                 	$user = User::getInstance();
 	                $user->set('id', 0);
@@ -219,19 +225,36 @@ class Controller {
 				$user->set('password', $_POST['password']);
 				$user->save();
 			}
+			else {
+				error_log('bad result after save');
+			}
 			if ($result) {
 				$uid = $user->get('id');
+				error_log('ok, uid '.$uid);
+			}
+			else {
+				error_log('bad result after changing pw');
 			}
 		}
 		if ($lab['add_group'] && $uid) {
 			error_log('join group, uid: '.$uid.', gid: '.$lab['add_group']);
 			if (($group = \Hubzero\User\Group::getInstance($lab['add_group']))) {
 				if (!in_array($uid, $group->get('members'))) {
+					error_log('confirm group add');
 					$group->add('members', [$uid]);
 					$group->update();
 				}
+				else {
+					error_log('already in group');
+				}
+			}
+			else {
+				error_log('failed to get group instance '.$lab['add_group']);
 			}
 			
+		}
+		else {
+			error_log('not adding group: uid '.$uid.', gid '.$lab['add_group']);
 		}
 		$this->resp = ['text/plain', 'ok'];
 	}
@@ -439,6 +462,8 @@ class Controller {
 				return $this->getProfile('surname');
 			case 'email':
 				return $this->user->get('email');
+			case 'affiliation':
+				return $this->getProfile('organization');
 			default:
 				throw new InternalServerError('Undefined attribute release: '.$key);
 		}

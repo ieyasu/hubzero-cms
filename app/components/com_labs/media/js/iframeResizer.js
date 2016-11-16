@@ -125,7 +125,7 @@
 	}
 
 	function output(type,iframeId,msg,enabled){
-		if (true === enabled && 'object' === typeof window.console){
+		if (true || true === enabled && 'object' === typeof window.console){
 			console[type](formatLogHeader(iframeId),msg);
 		}
 	}
@@ -219,8 +219,10 @@
 			}
 
 			// hubpub addition
+			console.log('check init');
 			var ma = event.data.match(/:init:(.+):(.+):(.*)$/);
 			if (ma) {
+				console.log('call init');
 				hubPubUpdateMeta.apply(null, [ma[1], ma[2], ma[3]].map(decodeURIComponent));
 			}
 

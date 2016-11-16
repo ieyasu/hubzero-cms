@@ -51,6 +51,9 @@ h2.app {
 iFrameResize({ 'targetOrigin': 'ojs.labs.cdmhub.aws.hubzero.org' });
 
 function hubPubUpdateMeta(url, title, breadcrumbs) {
+	window.scrollTo(0, 0);
+	console.log('scroll up');
+
 	var urlParser = document.createElement('a');
 	urlParser.href = url;
 	var ma = location.toString().match(/(\/labs\/run\/[-_0-9A-Za-z]+)/);
