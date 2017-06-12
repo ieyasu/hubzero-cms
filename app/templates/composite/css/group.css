@@ -474,3 +474,88 @@ section.section .aside:after {
 #group-info .links li {
 	top: 0;
 }
+
+@media (min-width:50em) {
+	.group_projects header.content-header {
+		position: relative;
+	}
+	.group_projects #member_options {
+		margin: 0;
+		position: absolute;
+		right: 30px;
+		top: 0;
+		text-align: right;
+		color: #666;
+	}
+	/*.group_projects #member_options #options-dock {
+		text-align: left;
+		display: none;
+	}
+	.group_projects #member_options:hover #options-dock {
+		display: block;
+	}*/
+	.group_projects #member_options li {
+		border: 2px solid #CCC;
+		border: 2px solid rgba(0, 0, 0, 0.5);
+		padding: 0.7em 0.91em;
+		line-height: 1;
+	}
+	.group_projects #member_options li li {
+		position: relative;
+		right: 0;
+	}
+	.group_projects #member_options li span {
+		color: #52ad4b;
+		font-weight: bold;
+	}
+	.group_projects #member_options li:active,
+	.group_projects #member_options li:hover {
+		background-color: #FFF;
+		color: #222;
+	}
+	.group_projects #member_options li #options-dock {
+		display: none;
+	}
+	.group_projects #member_options:hover #options-dock {
+		display: block;
+	}
+	.group_projects #member_options #options-dock {
+		position: absolute;
+		width: 200px;
+		top: 100%;
+		right: 0;
+		padding: 0;
+		z-index: 99999;
+		color: #666;
+		font-weight: normal;
+		display: none;
+		background: #FFFFFF;
+		text-align: left;
+		border: 1px solid #E2E2E2;
+	}
+	.group_projects #member_options li:hover #options-dock {
+		display: block;
+	}
+	.group_projects #member_options #options-dock ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		position: static;
+	}
+	.group_projects #member_options #options-dock ul li {
+		margin: 0;
+		padding: 0.7em;
+		float: none;
+		display: block;
+		color: #666;
+		font-weight: normal;
+		border: none;
+		border-bottom: 1px solid #E2E2E2;
+		text-align: left;
+	}
+	.group_projects #member_options #options-dock p {
+		margin: 0;
+		padding: 0.7em;
+		border-bottom: 1px solid #E2E2E2;
+	}
+}
