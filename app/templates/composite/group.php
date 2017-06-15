@@ -88,8 +88,8 @@ $membership_control = $params->get('membership_control', 1);
 <!--[if (gt IE 9)|!(IE)]><!--> <html dir="<?php echo $this->direction; ?>" lang="<?php echo $this->language; ?>" class="<?php echo $b . ' ' . $b . $v; ?>"> <!--<![endif]-->
 	<head>
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo \Hubzero\Document\Assets::getSystemStylesheet(); ?>" />
-		<link rel="stylesheet" href="/core/templates/system/css/main.css" type="text/css" />
-		<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/group.css" type="text/css" />
+		<link rel="stylesheet" href="/core/templates/system/css/main.css?v=<?php echo filemtime(PATH_CORE . '/templates/system/css/main.css'); ?>" type="text/css" />
+		<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/group.css?v=<?php echo filemtime(__DIR__ . '/css/group.css'); ?>" type="text/css" />
 		<jdoc:include type="head" />
 	</head>
 	<body class="contentpane" id="group-body">

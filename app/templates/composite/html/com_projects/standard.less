@@ -33,11 +33,14 @@
 	margin: 0;
 	padding: 0;
 }
-.main-menu ul.assetlist {
+/*.main-menu ul.assetlist {
 	padding-top: 0;
 	padding-bottom: 0;
-	/*margin-bottom: -1px;
-	margin-top: -4em;*/
+	margin-bottom: -1px;
+	margin-top: -4em;
+}*/
+.main-menu ul.projecttools ul {
+	margin: 0;
 }
 .main-menu ul.projecttools li {
 	position: relative;
@@ -47,6 +50,8 @@
 }
 .main-menu ul.projecttools li a:before {
 	color: #ccc;
+	font-family: "Fontcons";
+	content: attr(data-icon);
 }
 .main-menu ul.projecttools li a:hover {
 	border: none;
@@ -56,6 +61,9 @@
 .main-menu ul.projecttools li.active a:before,
 #plg-header h3:before {
 	color: black;
+}
+.main-menu ul.projecttools li.active>a:before {
+	font-weight: normal;
 }
 .main-menu ul.projecttools li.assets span {
 	padding-left: 20px;
@@ -68,15 +76,26 @@
 	padding: 0.75em 2em 0.75em 3.9em;
 	border: none;
 }
+.main-menu ul.projecttools li li a,
+.main-menu ul.projecttools li li.assets > span {
+	padding-left: 4.9em;
+}
 .main-menu ul.projecttools li.active {
 	color: #eee;
 	font-weight: 500;
 }
-.main-menu ul.projecttools li.active a {
+.main-menu ul.projecttools li.active>a {
 	background: #f9f9f9;
 	color: #222;
 }
-.main-menu ul.projecttools li.active a span {
+.main-menu ul.projecttools li li.active>a {
+	background: transparent;
+	color: #fff;
+}
+.main-menu ul.projecttools li li.active>a:before {
+	color: #fff;
+}
+.main-menu ul.projecttools li.active>a span {
 	font-weight: bold;
 }
 .main-menu ul.projecttools li.editing {
@@ -85,6 +104,9 @@
 }
 .main-menu ul.assetlist {
 	//background: #E8E8E8;
+}
+.main-menu ul.assetlist li li a {
+	padding: 0.75em 0.75em 0.75em 3.9em;
 }
 .main-menu ul.projecttools li.pt_title,
 ul.projecttools li.pt_title:hover {
@@ -143,6 +165,13 @@ ul.projecttools a:focus {
 .main-menu ul.projecttools li a span.highlight span {
 	background: red;
 	color: white;
+}
+.group_projects .main-menu {
+	background: #f9f9f9;
+}
+.group_projects .main-menu ul.projecttools li {
+	border-bottom: 1px solid #f1f1f1;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.);
 }
 /* Right-hand side blocks
 --------------------------------------------- */
@@ -239,5 +268,9 @@ ul.projecttools a:focus {
 	.main-menu ul.projecttools li a,
 	.main-menu ul.projecttools li.assets>span {
 		padding: 0.6em 2em 0.6em 6.5em;
+	}
+	.main-menu ul.projecttools li li a,
+	.main-menu ul.projecttools li li.assets > span {
+		padding-left: 7.5em;
 	}
 }

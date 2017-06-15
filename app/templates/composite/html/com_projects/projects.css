@@ -831,6 +831,7 @@ h4.welcome-h {
 --------------------------------------------- */
 table#infotbl th {
   font-weight: bold;
+  width: 8em;
 }
 table#infotbl th,
 table#infotbl td {
