@@ -131,16 +131,22 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 												// no picture
 												$pic = false;
 											}
+
+											$recipient = Hubzero\Message\Recipient::blank();
+											$unread = $recipient->getUnreadMessagesCount(User::get('id'), 0);
 											?>
 											<a class="user-account-link loggedin" href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>">
 												Logged in (<?php echo stripslashes(User::get('username')); ?>)
+												<?php if ($unread) { ?>
+													<span class="user-account-unread"><?php echo $unread; ?></span>
+												<?php } ?>
 											</a>
 											<div class="account-details">
 												<div class="user-info">
 													<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id')); ?>" class="cf">
-																		<span class="user-image">
-																			<img src="<?php echo $profile->getPicture(); ?>" alt="<?php echo User::get('name'); ?>" />
-																		</span>
+														<span class="user-image">
+															<img src="<?php echo $profile->getPicture(); ?>" alt="<?php echo User::get('name'); ?>" />
+														</span>
 
 														<p>
 															<span class="account-name"><?php echo stripslashes(User::get('name')) . ' (' . stripslashes(User::get('username')) . ')'; ?></span>
@@ -154,6 +160,14 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 													</li>
 													<li id="account-profile">
 														<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id') . '&active=profile'); ?>"><span><?php echo Lang::txt('TPL_ACCOUNT_PROFILE'); ?></span></a>
+													</li>
+													<li id="account-profile">
+														<a href="<?php echo Route::url('index.php?option=com_members&id=' . User::get('id') . '&active=messages'); ?>"><span>
+															<?php if ($unread) { ?>
+																<span class="user-account-unread"><?php echo $unread; ?></span>
+															<?php } ?>
+															<?php echo Lang::txt('TPL_ACCOUNT_MESSAGES'); ?>
+														</span></a>
 													</li>
 													<li id="account-logout">
 														<a href="<?php echo Route::url('index.php?option=com_users&view=logout'); ?>"><span><?php echo Lang::txt('TPL_LOGOUT'); ?></span></a>
@@ -417,7 +431,7 @@ $this->setTitle(Config::get('sitename') . ' - ' . $this->getTitle());
 						</ul>
 
 						<div class="copy">
-							<p>Copyright © <?php echo date('Y'); ?> cdmHUB</p>
+							<p>Copyright &copy; <?php echo date('Y'); ?> cdmHUB</p>
 						</div>
 					</section>
 				</footer>
