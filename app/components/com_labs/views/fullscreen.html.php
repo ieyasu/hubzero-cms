@@ -45,6 +45,9 @@ h2 {
 h2.app {
 	display: none;
 }
+#system-debug {
+	display: none;
+}
 </style>
 <iframe id="hubpub" src="<?php echo $a($connect); ?>" border=0></iframe>
 <script>
