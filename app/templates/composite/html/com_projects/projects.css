@@ -711,7 +711,7 @@ h4.welcome-h {
 .pluginOptions {
   float: right;
   list-style: none;
-  margin: -4em 0 0 0;
+  margin: 0;
   padding: 0;
 }
 /* Project member options
