@@ -127,6 +127,7 @@ class Publication extends \JTable
 		$dev 			= isset($filters['dev']) && $filters['dev'] == 1 ? 1 : 0;
 		$projects 		= isset($filters['projects']) && !empty($filters['projects']) ? $filters['projects'] : array();
 		$mine 			= isset($filters['mine']) && $filters['mine'] ? $filters['mine'] : 0;
+		$featured		= isset($filters['featured']) && $filters['featured'] ? 1 : 0;
 		$sortby  		= isset($filters['sortby']) ? $filters['sortby'] : 'title';
 
 		$query  = "FROM ";
@@ -146,6 +147,11 @@ class Publication extends \JTable
 
 		$query .= "LEFT JOIN #__publication_categories AS t ON t.id=C.category ";
 		$query .= " WHERE V.publication_id=C.id AND MT.id=C.master_type AND PP.id = C.project_id ";
+
+		if ($featured)
+		{
+			$query .=" AND C.featured = 1";
+		}
 
 		if ($dev)
 		{
@@ -540,8 +546,8 @@ class Publication extends \JTable
 				PP.owned_by_group as project_group ";
 
 		$sql .= ",(SELECT vv.version_label FROM #__publication_versions as vv
-				WHERE vv.publication_id=C.id AND (vv.state = 3 OR vv.state = 5)) AS dev_version_label ";
-		$sql .= ",(SELECT vv.state FROM #__publication_versions as vv WHERE vv.publication_id=C.id AND vv.main=1)
+				WHERE vv.publication_id=C.id AND (vv.state = 3 OR vv.state = 5) LIMIT 1) AS dev_version_label ";
+		$sql .= ",(SELECT vv.state FROM #__publication_versions as vv WHERE vv.publication_id=C.id AND vv.main=1 ORDER BY vv.created DESC LIMIT 1)
 				AS default_version_status ";
 		$sql .= ",(SELECT COUNT(*) FROM #__publication_versions WHERE publication_id=C.id AND state!=3 ) AS versions ";
 		$sql .= " FROM #__publication_versions as V, #__projects AS PP, #__publication_master_types AS MT, $this->_tbl AS C ";

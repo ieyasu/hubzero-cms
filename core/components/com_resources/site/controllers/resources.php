@@ -2135,6 +2135,24 @@ class Resources extends SiteController
 			App::abort(404, Lang::txt('COM_RESOURCES_RESOURCE_NOT_FOUND'));
 		}
 
+		// Check if direct access is restricted. If so, look for a token
+		$activeParams = new \Hubzero\Config\Registry($resource->params);
+		$type = new Type($this->database);
+		$type->load($resource->type);
+		$typeParams = new \Hubzero\Config\Registry($type->params);
+		$restrictDirectDownload = $activeParams->get('restrict_direct_access') ? $activeParams->get('restrict_direct_access') : $typeParams->get('restrict_direct_access');
+
+
+		// Check to see if the Google doc viewer is being used and skip checking for the token if that is the case.
+		$referer = Request::server('HTTP_REFERER');
+		$referer = !empty($referer) ? parse_url($referer) : null;
+		$refererHost = !empty($referer['host']) ? strtolower($referer['host']) : null;
+
+		if ($restrictDirectDownload == 2 && $refererHost != 'docs.google.com')
+		{
+			Request::checkToken('get');
+		}
+
 		// Check if the resource is for logged-in users only and the user is logged-in
 		if (($token = Request::getVar('token', '', 'get')))
 		{
@@ -2444,6 +2462,11 @@ class Resources extends SiteController
 		// Load the resource
 		$row = new Resource($this->database);
 		$row->load($id);
+
+		if (!$row->id)
+		{
+			App::abort(404, Lang::txt('COM_RESOURCES_RESOURCE_NOT_FOUND'));
+		}
 
 		$thedate = ($row->publish_up != '0000-00-00 00:00:00')
 				 ? $row->publish_up
