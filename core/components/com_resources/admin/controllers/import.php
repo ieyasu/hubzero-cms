@@ -155,13 +155,19 @@ class Import extends AdminController
 		}
 
 		// get request vars
-		$import = Request::getVar('import', array());
+		$importVars = Request::getVar('import', array());
 		$hooks  = Request::getVar('hooks', array());
 		$params = Request::getVar('params', array());
 		$file   = Request::getVar('file', array(), 'FILES');
 
 		// create import model object
 		$import = new Models\Import();
+		$import->set('name', $importVars['name']);
+		$import->set('notes', $importVars['notes']);
+		if (isset($importVars['id']) && $importVars['id'])
+		{
+			$import->set('id', $importVars['id']);
+		}
 
 		// set our hooks
 		$import->set('hooks', json_encode($hooks));
@@ -176,7 +182,7 @@ class Import extends AdminController
 		$import->set('params', $iparams->toString());
 
 		// bind input to model
-		if (!$import->bind($import))
+		if (!$import->bind($importVars))
 		{
 			Notify::error($import->getError());
 			return $this->editTask();
