@@ -45,17 +45,18 @@ $bc = \Components\Projects\Helpers\Html::buildFileBrowserCrumbs($this->subdir, R
 $min = $this->model->access('content') ? 1 : 0;
 
 // Remote connections
-$connected = $this->oparams->get('google_token') ? true : false;
-$sharing   = isset($this->sharing) && $this->sharing ? true : false;
-$sync      = isset($this->sync) ? $this->sync : 0;
+$versionTracking = 0;
+$connected = false;
+$sharing = false;
+$sync = false;
 
-$versionTracking = 1;
-if (isset($this->params['versionTracking']) && $this->params['versionTracking'] == '0')
+//Only show these features if version tracking was specified in the project
+if (isset($this->params['versionTracking']) && $this->params['versionTracking'] == '1')
 {
-	$versionTracking = 0;
-	$connected = false;
-	$sharing = false;
-	$sync = false;
+	$versionTracking = 1;
+	$connected = $this->oparams->get('google_token') ? true : false;
+	$sharing   = isset($this->sharing) && $this->sharing ? true : false;
+	$sync      = isset($this->sync) ? $this->sync : 0;
 }
 ?>
 
@@ -158,7 +159,9 @@ if (isset($this->params['versionTracking']) && $this->params['versionTracking'] 
 				<th <?php if ($this->params['sortby'] == 'modified') { echo 'class="activesort"'; } ?>>
 					<a href="<?php echo Route::url($this->model->link('files') . '&action=browse' . $subdirlink . '&sortby=modified&sortdir=' . $sortbyDir); ?>" class="re_sort" title="<?php echo Lang::txt('PLG_PROJECTS_FILES_SORT_BY') . ' ' . ucfirst(Lang::txt('PLG_PROJECTS_FILES_MODIFIED')); ?>"><?php echo ucfirst(Lang::txt('PLG_PROJECTS_FILES_MODIFIED')); ?></a>
 				</th>
+				<?php if ($this->repo->getAdapterName() == 'git'){ ?>
 				<th><?php echo ucfirst(Lang::txt('PLG_PROJECTS_FILES_BY')); ?></th>
+				<?php }; ?>
 				<th class="centeralign nojs"></th>
 				<?php if ($this->publishing) { ?>
 				<th><?php echo Lang::txt('PLG_PROJECTS_FILES_PUBLISHED'); ?></th>
@@ -187,6 +190,7 @@ if (isset($this->params['versionTracking']) && $this->params['versionTracking'] 
 						 ->set('model', $this->model)
 						 ->set('subdir', $this->subdir)
 						 ->set('items', $this->items)
+						 ->set('repo', $this->repo)
 					     ->set('params', $this->params)
 					     ->set('publishing', $this->publishing)
 					     ->set('fileparams', $this->fileparams)

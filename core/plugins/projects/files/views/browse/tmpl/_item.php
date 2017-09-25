@@ -42,7 +42,7 @@ if (!strstr($handlerBase, '{'))
 }
 $handlerBase = str_replace(
 	array('{project}', '{file}'),
-	array($this->model->get('alias'), $this->item->get('name')),
+	array($this->model->get('alias'), $this->item->get('localPath')),
 	$handlerBase
 );
 
@@ -149,7 +149,9 @@ $ext = $this->item->get('type') == 'file' ? $this->item->get('ext') : 'folder';
 		<?php } ?>
 	<?php } elseif ($this->item->get('untracked')) { echo Lang::txt('PLG_PROJECTS_FILES_UNTRACKED'); } ?>
 	</td>
-	<td class="shrinked middle_valign"><?php echo $me ? Lang::txt('PLG_PROJECTS_FILES_ME') : $this->item->get('author'); ?></td>
+	<?php if ($this->repo->getAdapterName() == 'git'){ ?>
+		<td class="shrinked middle_valign"><?php echo $me ? Lang::txt('PLG_PROJECTS_FILES_ME') : $this->item->get('author'); ?></td>
+	<?php } ?>
 	<td class="shrinked middle_valign nojs">
 		<?php if ($this->model->access('content')) { ?>
 			<a href="<?php echo Route::url($this->model->link('files') . '&action=delete' . $subdirPath . '&asset=' . urlencode($this->item->get('name'))); ?>" title="<?php echo Lang::txt('PLG_PROJECTS_FILES_DELETE_TOOLTIP'); ?>" class="i-delete">&nbsp;</a>

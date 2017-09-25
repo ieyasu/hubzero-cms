@@ -8,9 +8,9 @@ defined('_HZEXEC_') or die();
 /**
  * Migration script to change database engine for a few core tables that could have been missed
  **/
-class Migration2016090710490000Core extends Base
+class Migration20160907104900Core extends Base
 {	
-	private function changeEngine($table,$engine)
+	private function changeEngine($table, $engine)
 	{
 		if ($this->db->tableExists($table) && strtolower($this->db->getEngine($table)) != $engine)
 		{
@@ -22,12 +22,15 @@ class Migration2016090710490000Core extends Base
 
 	public function up()
 	{
-		$this->changeEngine('#__viewlevels','MyISAM');
-		$this->changeEngine('#__languages','MyISAM');
-		$this->changeEngine('#__associations','MyISAM');
+		$this->changeEngine('#__viewlevels', 'MyISAM');
+		$this->changeEngine('#__languages', 'MyISAM');
+		$this->changeEngine('#__associations', 'MyISAM');
 	}
 
 	public function down()
 	{
+		$this->changeEngine('#__viewlevels', 'Innodb');
+		$this->changeEngine('#__languages', 'Innodb');
+		$this->changeEngine('#__associations', 'Innodb');
 	}
 }

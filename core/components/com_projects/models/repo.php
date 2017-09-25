@@ -128,9 +128,8 @@ class Repo extends Object
 			// Use regex to avoid what might be a caching thing with JTables
 			$matches = array();
 			preg_match('/versionTracking=(\d)/', $this->get('project')->get('params'), $matches);
-			// Assume if versionTracking param was not set that it was tracked via git previously
-			// Otherwise honor the variable
-			if (!isset($matches[1]) || $matches[1] == 1)
+			// Only use git adapter if project specifies it - otherwise assume we're not using git
+			if (isset($matches[1]) && $matches[1] == 1)
 			{
 				$engine = 'git';
 			}
@@ -181,9 +180,8 @@ class Repo extends Object
 				// Use regex to avoid what might be a caching thing with JTables
 				$matches = array();
 				preg_match('/versionTracking=(\d)/', $this->get('project')->get('params'), $matches);
-				// Assume if versionTracking param was not set that it was tracked via git previously
-				// Otherwise honor the variable
-				if (!isset($matches[1]) || $matches[1] == 1)
+				// Only use git adapter if project specifies it - otherwise assume we're not using git
+				if (isset($matches[1]) && $matches[1] == 1)
 				{
 					$engine = 'git';
 				}
@@ -209,6 +207,18 @@ class Repo extends Object
 		}
 
 		return $this->_adapter;
+	}
+
+	public function getAdapterName()
+	{
+		if (!$this->_adapter)
+		{
+			$this->_adapter();
+		}
+		$class = get_class($this->_adapter);
+		$lastSlash = strrpos($class, '\\');
+		$className = substr($class, $lastSlash + 1);
+		return strtolower($className);
 	}
 
 	/**
@@ -1553,7 +1563,11 @@ class Repo extends Object
 			}
 			else
 			{
-				$engine = $this->get('project')->params->get('engine');
+				$engine = 'nogit';
+				if ($this->get('project'))
+				{
+					$engine = $this->get('project')->params->get('engine');
+				}
 				if ($engine == 'git')
 				{
 					$git = new Helpers\Git($path);

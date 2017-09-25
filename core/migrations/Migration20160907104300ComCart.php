@@ -6,11 +6,11 @@ use Hubzero\Content\Migration\Base;
 defined('_HZEXEC_') or die();
 
 /**
- * Migration script to change database engine for support_quest_folders
+ * Migration script to change database engine for cart_meta table
  **/
-class Migration2016090710560000ComSupport extends Base
-{	
-	private function changeEngine($table,$engine)
+class Migration20160907104300ComCart extends Base
+{
+	private function changeEngine($table, $engine)
 	{
 		if ($this->db->tableExists($table) && strtolower($this->db->getEngine($table)) != $engine)
 		{
@@ -22,10 +22,11 @@ class Migration2016090710560000ComSupport extends Base
 
 	public function up()
 	{
-		$this->changeEngine('#__support_query_folders','MyISAM');
+		$this->changeEngine('#__cart_meta', 'MyISAM');
 	}
 
 	public function down()
 	{
+		$this->changeEngine('#__cart_meta', 'Innodb');
 	}
 }
