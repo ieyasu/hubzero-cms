@@ -65,7 +65,7 @@ class Orcid extends SiteController
 	 * @var  array
 	 */
 	protected $_accessToken;
-	
+
 	/**
 	 * A list of ORCID services that can be used
 	 *
@@ -77,7 +77,7 @@ class Orcid extends SiteController
 		'members' => 'api.orcid.org',
 		'sandbox' => 'api.sandbox.orcid.org'
 	);
-	
+
 	/**
 	 * OAuth tokens
 	 *
@@ -113,7 +113,7 @@ class Orcid extends SiteController
 			}
 		}
 	}
-	
+
 	/**
 	 * Query the ORCID user's name
 	 *
@@ -136,11 +136,11 @@ class Orcid extends SiteController
 		curl_setopt($initedCurl, CURLOPT_RETURNTRANSFER, 1);
 
 		$curlData = curl_exec($initedCurl);
-		
+
 		$xmlStr = htmlentities($curlData);
-		
+
 		$xmlStr = preg_replace('/[a-zA-Z-]+[a-zA-Z]+:([a-zA-Z])/', '$1', $xmlStr);
-		
+
 		$xmlStr = html_entity_decode($xmlStr);
 
 		if (!curl_errno($initedCurl))
@@ -153,7 +153,7 @@ class Orcid extends SiteController
 		}
 
 		curl_close($initedCurl);
-		
+
 		try
 		{
 			$root = simplexml_load_string($xmlStr);
@@ -162,11 +162,11 @@ class Orcid extends SiteController
 		{
 			$root = '';
 		}
-		
+
 		$name = array();
-		
+
 		if (!empty($root))
-		{			
+		{
 			foreach ($root->children() as $child)
 			{
 				if ($child->getName() == 'name')
@@ -217,23 +217,20 @@ class Orcid extends SiteController
 	}
 
 	/**
-	 * Search ORCID by name or email
+	 * Get ORCID record searching access token
 	 *
-	 * @param   string  $fname  First name
-	 * @param   string  $lname  Last name
-	 * @param   string  $email  Email address
+	 * @param   None
 	 * @return  string
 	 */
-	private function _fetchXml($fname, $lname, $email)
+	private function _getAccessToken()
 	{
-		$srv = $this->config->get('orcid_service', 'members');
-		
 		// Get ORCID record access token
+		$srv = $this->config->get('orcid_service', 'members');
 		$clientID = $this->config->get('orcid_' . $srv . '_client_id');
 		$clientSecret = $this->config->get('orcid_' . $srv . '_token');
 		$oauthToken = $this->_oauthToken[$srv];
 		$params = "client_id=" . $clientID . "&client_secret=" . $clientSecret. "&grant_type=client_credentials&scope=/read-public";
-		
+
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $oauthToken);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
@@ -241,19 +238,37 @@ class Orcid extends SiteController
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$result = curl_exec($ch);
-		
+
 		if ($result)
 		{
 			$response = json_decode($result, true);
 			$this->_accessToken = $response['access_token'];
+			return $this->_accessToken;
 		}
-		
-		// Search by first name, last name, email address
+		else
+		{
+			return false;
+		}
+	}
+
+	/**
+	 * Search ORCID by name or email
+	 *
+	 * @param   string  $fname  First name
+	 * @param   string  $lname  Last name
+	 * @param   string  $iname  Insitution name
+	 * @return  string
+	 */
+	private function _fetchXml($fname, $lname, $iname)
+	{
+		$srv = $this->config->get('orcid_service', 'members');
+
+		// Search by first name, last name, institution name
 		$url = Request::scheme() . '://' . $this->_services[$srv] . '/v2.0/search/?q=';
 		$tkn = $this->_accessToken;
-		
+
 		$bits = array();
-		
+
 		if ($fname)
 		{
 			$bits[] = 'given-names:' . $fname;
@@ -264,31 +279,31 @@ class Orcid extends SiteController
 			$bits[] = 'family-name:' . $lname;
 		}
 
-		if ($email)
+		if ($iname)
 		{
-			$bits[] = 'email:' . $email;
+			$bits[] = 'affiliation-org-name:' . $iname;
 		}
-		
+
 		$url .= implode('+AND+', $bits);
-		
+
 		$header = array('Accept: application/vnd.orcid+xml');
 		if ($srv != 'public')
 		{
 			$header[] = 'Authorization: Bearer ' . $tkn;
 		}
-		
+
 		$initedCurl = curl_init();
 		curl_setopt($initedCurl, CURLOPT_URL, $url);
 		curl_setopt($initedCurl, CURLOPT_HTTPHEADER, $header);
 		curl_setopt($initedCurl, CURLOPT_FOLLOWLOCATION, true);
 		curl_setopt($initedCurl, CURLOPT_MAXREDIRS, 3);
 		curl_setopt($initedCurl, CURLOPT_RETURNTRANSFER, 1);
-		
 		$curlData = curl_exec($initedCurl);
+
 		$xmlStr = htmlentities($curlData);
 		$xmlStr = preg_replace('/[a-zA-Z]+:([a-zA-Z])/', '$1', $xmlStr);
 		$xmlStr = html_entity_decode($xmlStr);
-		
+
 		if (!curl_errno($initedCurl))
 		{
 			$info = curl_getinfo($initedCurl);
@@ -297,9 +312,9 @@ class Orcid extends SiteController
 		{
 			echo 'Curl error: ' . curl_error($initedCurl);
 		}
-		
+
 		curl_close($initedCurl);
-		
+
 		try
 		{
 			$root = simplexml_load_string($xmlStr);
@@ -390,76 +405,135 @@ class Orcid extends SiteController
 	{
 		$first_name  = Request::getVar('fname', '');
 		$last_name   = Request::getVar('lname', '');
-		$email       = Request::getVar('email', '');
 		$returnOrcid = Request::getInt('return', 0);
 		$isRegister  = $returnOrcid == 1;
+		$records = array();
+
+		$ins_option = $this->config->get('orcid_institution_field_option');
+
+		$ins_name = $this->config->get('orcid_user_institution_name', 'Purdue University');
 
 		$callbackPrefix = 'HUB.Members.Profile.';
 		if ($isRegister)
 		{
 			$callbackPrefix = 'HUB.Register.';
 		}
-		
-		// Separated into three requests for better results
-		$filled = 0;
-		$fnames = array();
-		$lnames = array();
-		$emails = array();
 
-		// get results based on first name
-		if ($first_name)
+		// The default option is searching by first name and last name. 
+		$defSearch = array();
+
+		// The configurable option is searching by first name, last name, and instituation name
+		$optSearch = array();
+
+		$firstNameSearch = $lastNameSearch = $firstNameOptSearch = $lastNameOptSearch = array();
+
+		// Get ORCID record public access token
+		$token = $this->_getAccessToken();
+
+		if (false == $token)
 		{
-			$filled++;
-
-			$root = $this->_fetchXml($first_name, null, null);
-
-			if (!empty($root))
+			return;
+		}
+		else
+		{
+			if (!empty($first_name) && !empty($last_name))
 			{
-				$fnames = $this->_parseTree($root);
+				// default searching by first name and last name
+				$root = $this->_fetchXml($first_name, $last_name, null);
+				if (!empty($root))
+				{
+					$defSearch = $this->_parseTree($root);
+				}
+
+				// Searching by first name, last name, and institution name when the institution option is enabled.
+				if ($ins_option)
+				{
+					$root = $this->_fetchXml($first_name, $last_name, $ins_name);
+					if (!empty($root))
+					{
+						$optSearch = $this->_parseTree($root);
+					}
+				}
+			}
+			else
+			{
+				if (!empty($first_name) && empty($last_name))
+				{
+					$root = $this->_fetchXml($first_name, null, null);
+					if (!empty($root))
+					{
+						$firstNameSearch = $this->_parseTree($root);
+					}
+				}
+
+				if (empty($first_name) && !empty($last_name))
+				{
+					$root = $this->_fetchXml(null, $last_name, null);
+					if (!empty($root))
+					{
+						$lastNameSearch = $this->_parseTree($root);
+					}
+				}
+
+				if ($ins_option)
+				{
+					if (!empty($first_name) && empty($last_name))
+					{
+						$root = $this->_fetchXml($first_name, null, $ins_name);
+						if (!empty($root))
+						{
+							$firstNameOptSearch = $this->_parseTree($root);
+						}
+					}
+
+					if (empty($first_name) && !empty($last_name))
+					{
+						$root = $this->_fetchXml(null, $last_name, $ins_name);
+						if (!empty($root))
+						{
+							$lastNameOptSearch = $this->_parseTree($root);
+						}
+					}
+				}
 			}
 		}
 
-		// get results based on last name
-		if ($last_name)
+		if ($ins_option)
 		{
-			$filled++;
-
-			$root = $this->_fetchXml(null, $last_name, null);
-
-			if (!empty($root))
+			if (!empty($first_name) && !empty($last_name))
 			{
-				$lnames = $this->_parseTree($root);
+				$records = array_merge($defSearch, $optSearch);
+			}
+			else
+			{
+				if (!empty($first_name) && empty($last_name))
+				{
+					$records = array_merge($records, $firstNameSearch, $firstNameOptSearch);
+				}
+
+				if (empty($first_name) && !empty($last_name))
+				{
+					$records = array_merge($records, $lastNameSearch, $lastNameOptSearch);
+				}
 			}
 		}
-
-		// get results based on email
-		if ($email)
+		else
 		{
-			$filled++;
-
-			$root = $this->_fetchXml(null, null, $email);
-
-			if (!empty($root))
+			if (!empty($first_name) && !empty($last_name))
 			{
-				$emails = $this->_parseTree($root);
+				$records = array_merge($records, $defSearch);
+			}
+
+			if (!empty($first_name) && empty($last_name))
+			{
+				$records = array_merge($records, $firstNameSearch);
+			}
+
+			if (empty($first_name) && !empty($last_name))
+			{
+				$records = array_merge($records, $lastNameSearch);
 			}
 		}
-
-		// Get results based on more than one field
-		$multi = array();
-
-		if ($filled > 1)
-		{
-			$root = $this->_fetchXml($first_name, $last_name, $email);
-
-			if (!empty($root))
-			{
-				$multi = $this->_parseTree($root);
-			}
-		}
-
-		// combine
-		$records = array_merge((array)$multi, (array)$emails, (array)$fnames, (array)$lnames);
 
 		ob_end_clean();
 		ob_start();
@@ -656,7 +730,7 @@ class Orcid extends SiteController
 		$clientID = $this->config->get('orcid_' . $srv . '_client_id');
 		$clientSecret = $this->config->get('orcid_' . $srv . '_token');
 		$oauthToken = $this->_oauthToken[$srv];
-		
+
 		if (Request::getVar('code'))
 		{
 			//Build request parameter string
@@ -699,7 +773,7 @@ class Orcid extends SiteController
 	public static function saveORCIDToProfile($userID, $orcid)
 	{
 		$row = Profile::oneByKeyAndUser('orcid', $userID);
-		
+
 		// If the record exists, you are just overwriting the existing data.
 		// If the record doesn't exist, your are setting for a new entry.
 		$row->set('user_id', $userID);
@@ -711,7 +785,7 @@ class Orcid extends SiteController
 			\Notify::error($row->getError());
 		}
 	}
-	
+
 	/**
 	 * Show the landing page about user and ORCID ID
 	 *
