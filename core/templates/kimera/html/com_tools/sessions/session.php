@@ -143,7 +143,10 @@ if (!$this->app->sess) {
 							</label>
 							<select name="viewer" id="app-viewer">
 								<?php foreach ($plugins as $plugin) {
-									if ($viewer == $plugin->name) continue;
+									if ($viewer == $plugin->name)
+									{
+										continue;
+									}
 								?>
 									<option value="<?php echo $plugin->name; ?>"<?php if ($viewer == $plugin->name) { echo ' selected="selected"'; } ?>><?php echo $plugin->title; ?></option>
 								<?php } ?>
@@ -189,7 +192,7 @@ if (!$this->app->sess) {
 				$this->view('diskusage', 'storage')
 				     ->set('option', $this->option)
 				     ->set('amt', $this->app->percent)
-				     ->set('du', NULL)
+				     ->set('du', null)
 				     ->set('percent', 0)
 				     ->set('msgs', 0)
 				     ->set('ajax', 0)
@@ -249,18 +252,6 @@ if (!$this->app->sess) {
 	</div><!-- #app-wrap -->
 
 	<?php echo implode("\n", Event::trigger('tools.onToolSessionViewAfter', array($this->app, $this->output, $readOnly))); ?>
-
-	<?php
-	// Are we on an iPad?
-	$isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'], 'iPad');
-
-	if ($isiPad && $this->config->get('launch_ipad', 0) && $this->config->get('launch_ipad_app'))
-	{
-		?>
-		<p class="tablet-app"><a class="btn icon-tablet" href="<?php echo $this->config->get('launch_ipad_app'); ?>://tools/session/<?php echo $this->app->sess; ?>"><?php echo Lang::txt('Launch in iPad app'); ?></a></p>
-		<?php
-	}
-	?>
 
 	<div class="clear share-divider"></div>
 <?php if ($this->config->get('shareable', 0)) { ?>

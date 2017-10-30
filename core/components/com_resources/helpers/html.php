@@ -114,7 +114,9 @@ class Html
 					@list($property, $value) = explode(':', $declaration);
 					$property = strtolower(trim($property));
 
-					if (!$property) continue;
+					if (!$property) {
+						continue;
+					}
 
 					if (!in_array($property, $disallowed))
 					{
@@ -958,7 +960,6 @@ class Html
 
 				//get tool params
 				$params = Component::params('com_tools');
-				$launchOnIpad = $params->get('launch_ipad', 0);
 
 				// Generate the URL that launches a tool session
 				$lurl ='';
