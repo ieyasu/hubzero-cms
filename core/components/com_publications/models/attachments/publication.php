@@ -37,6 +37,7 @@ use Request;
 use Route;
 use Lang;
 use Date;
+use User;
 
 /**
  * Handles a publication link attachment
@@ -44,10 +45,10 @@ use Date;
 class Publication extends Base
 {
 	/**
-	* Attachment type name
-	*
-	* @var  string
-	*/
+	 * Attachment type name
+	 *
+	 * @var  string
+	 */
 	protected $_name = 'publication';
 
 	/**
@@ -133,11 +134,11 @@ class Publication extends Base
 				$description = '';
 				if ($publication->get('abstract'))
 				{
-					$description = \Hubzero\Utility\String::truncate(stripslashes($publication->get('abstract')), 300) . "\n";
+					$description = \Hubzero\Utility\Str::truncate(stripslashes($publication->get('abstract')), 300) . "\n";
 				}
 				else if ($publication->get('description'))
 				{
-					$description = \Hubzero\Utility\String::truncate(stripslashes($publication->get('description')), 300) . "\n";
+					$description = \Hubzero\Utility\Str::truncate(stripslashes($publication->get('description')), 300) . "\n";
 				}
 
 				$pop = Lang::txt('View link') . ' ' . $title;
@@ -443,7 +444,7 @@ class Publication extends Base
 		}
 		else
 		{
-			$objPA->publication_id         = $pub->id;
+			$objPA->publication_id = $pub->id;
 			$objPA->publication_version_id = $pub->version_id;
 			$objPA->path        = $path;
 			$objPA->type        = $this->_name;
@@ -473,6 +474,11 @@ class Publication extends Base
 	/**
 	 * Remove attachment
 	 *
+	 * @param   object   $row
+	 * @param   object   $element
+	 * @param   integer  $elementId
+	 * @param   object   $pub
+	 * @param   array    $blockParams
 	 * @return  boolean
 	 */
 	public function removeAttachment($row, $element, $elementId, $pub, $blockParams)
@@ -505,6 +511,11 @@ class Publication extends Base
 	/**
 	 * Update attachment properties
 	 *
+	 * @param   object   $row
+	 * @param   object   $element
+	 * @param   integer  $elementId
+	 * @param   object   $pub
+	 * @param   array    $blockParams
 	 * @return  boolean
 	 */
 	public function updateAttachment($row, $element, $elementId, $pub, $blockParams)
