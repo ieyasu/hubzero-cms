@@ -112,15 +112,15 @@ class plgProjectsPublications extends \Hubzero\Plugin\Plugin
 		{
 			$database = App::get('db');
 
-			// Instantiate project publication
-			$objP = new \Components\Publications\Tables\Publication($database);
+			// Instantiate a publication object
+			$pub_model = new \Components\Publications\Models\Publication();
 
 			$filters = array();
 			$filters['project']       = $model->get('id');
 			$filters['ignore_access'] = 1;
 			$filters['dev']           = 1;
 
-			$counts['publications'] = $objP->getCount($filters);
+			$counts['publications'] = $pub_model->entries('count', $filters);
 			return $counts;
 		}
 	}
@@ -1428,16 +1428,17 @@ class plgProjectsPublications extends \Hubzero\Plugin\Plugin
 		);
 
 		// Output HTML
-		$view->option    = $this->_option;
-		$view->database  = $this->_database;
-		$view->project   = $this->model;
-		$view->uid       = $this->_uid;
-		$view->config    = $this->model->config();
-		$view->title     = $this->_area['title'];
-		$view->active    = $block;
-		$view->pub       = $pub;
-		$view->pubconfig = $this->_pubconfig;
-		$view->task      = $this->_task;
+		$view->option           = $this->_option;
+		$view->database         = $this->_database;
+		$view->project          = $this->model;
+		$view->uid              = $this->_uid;
+		$view->config           = $this->model->config();
+		$view->title            = $this->_area['title'];
+		$view->active           = $block;
+		$view->pub              = $pub;
+		$view->selected_version = $version;
+		$view->pubconfig        = $this->_pubconfig;
+		$view->task             = $this->_task;
 
 		// Append breadcrumbs
 		$this->_appendBreadcrumbs($pub->get('title'), $pub->link('edit'), $version);
@@ -1786,6 +1787,7 @@ class plgProjectsPublications extends \Hubzero\Plugin\Plugin
 		$pid   = $this->_pid ? $this->_pid : Request::getInt('pid', 0);
 		$ajax  = Request::getInt('ajax', 0);
 		$label = trim(Request::getVar('version_label', '', 'post'));
+		$selected_version = Request::getVar('selected_version', 'default');
 
 		// Check permission
 		if (!$this->model->access('content'))
@@ -1795,7 +1797,7 @@ class plgProjectsPublications extends \Hubzero\Plugin\Plugin
 		}
 
 		// Load default version
-		$pub = new \Components\Publications\Models\Publication($pid, 'default');
+		$pub = new \Components\Publications\Models\Publication($pid, $selected_version);
 		if (!$pub->exists())
 		{
 			$this->setError(Lang::txt('PLG_PROJECTS_PUBLICATIONS_PUBLICATION_NOT_FOUND'));
@@ -1907,17 +1909,18 @@ class plgProjectsPublications extends \Hubzero\Plugin\Plugin
 			);
 
 			// Output HTML
-			$view->option    = $this->_option;
-			$view->database  = $this->_database;
-			$view->project   = $this->model;
-			$view->uid       = $this->_uid;
-			$view->pid       = $pid;
-			$view->pub       = $pub;
-			$view->task      = $this->_task;
-			$view->config    = $this->model->config();
-			$view->pubconfig = $this->_pubconfig;
-			$view->ajax      = $ajax;
-			$view->title     = $this->_area['title'];
+			$view->option           = $this->_option;
+			$view->database         = $this->_database;
+			$view->project          = $this->model;
+			$view->uid              = $this->_uid;
+			$view->pid              = $pid;
+			$view->pub              = $pub;
+			$view->task             = $this->_task;
+			$view->config           = $this->model->config();
+			$view->pubconfig        = $this->_pubconfig;
+			$view->selected_version = $selected_version;
+			$view->ajax             = $ajax;
+			$view->title            = $this->_area['title'];
 
 			// Get messages	and errors
 			$view->msg = $this->_msg;
@@ -1950,14 +1953,14 @@ class plgProjectsPublications extends \Hubzero\Plugin\Plugin
 	 */
 	protected function _overQuota()
 	{
-		// Instantiate project publication
-		$objP = new \Components\Publications\Tables\Publication($this->_database);
+		// Instantiate a publication object
+		$pub_model = new \Components\Publications\Models\Publication();
 
 		// Get all publications
-		$rows = $objP->getRecords(array('project' => $this->model->get('id'), 'dev' => 1, 'ignore_access' => 1));
+		$rows = $pub_model->entries('list', array('project' => $this->model->get('id'), 'dev' => 1, 'ignore_access' => 1));
 
 		// Get used space
-		$dirsize = \Components\Publications\Helpers\Html::getDiskUsage($rows, false);
+		$dirsize = \Components\Publications\Helpers\Html::getDiskUsage($rows);
 		$quota   = $this->model->params->get('pubQuota')
 				? $this->model->params->get('pubQuota')
 				: \Components\Projects\Helpers\Html::convertSize(floatval($this->model->config()->get('pubQuota', '1')), 'GB', 'b');
@@ -2881,21 +2884,21 @@ class plgProjectsPublications extends \Hubzero\Plugin\Plugin
 		$filters['ignore_access'] = 1;
 		$filters['dev']           = 1; // get dev versions
 
-		// Instantiate project publication
-		$objP = new \Components\Publications\Tables\Publication($database);
+		// Instantiate a publication object
+		$pub_model = new \Components\Publications\Models\Publication();
 
 		// Get all publications
-		$view->rows = $objP->getRecords($filters);
+		$view->rows = $pub_model->entries('list', $filters);
 
 		// Get used space
-		$view->dirsize = \Components\Publications\Helpers\Html::getDiskUsage($view->rows, false);
+		$view->dirsize = \Components\Publications\Helpers\Html::getDiskUsage($view->rows);
 		$view->params  = $model->params;
 		$view->quota   = $view->params->get('pubQuota')
 						? $view->params->get('pubQuota')
 						: \Components\Projects\Helpers\Html::convertSize(floatval($model->config()->get('pubQuota', '1')), 'GB', 'b');
 
 		// Get total count
-		$view->total = $objP->getCount($filters);
+		$view->total = $pub_model->entries('count', $filters);
 
 		$view->project = $model;
 		$view->option  = $this->_option;
