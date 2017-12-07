@@ -5,6 +5,21 @@
 // @license     http://www.gnu.org/licenses/lgpl-3.0.html LGPLv3
 //
 
+html {
+
+	&.panel-open {
+		position: relative;
+		overflow: hidden;
+		height: 100%;
+
+		body {
+			position: relative;
+			overflow: hidden;
+			height: 100%;
+		}
+	}
+}
+
 /* Body */
 body {
 	font-family: @bodyFont;
@@ -32,7 +47,7 @@ body {
 }
 
 .hub-wrap > main {
-	position: relative;
+	//position: relative;
 
 	// Top of the page background
 	.pageTop {
