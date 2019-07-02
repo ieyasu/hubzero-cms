@@ -33,15 +33,8 @@ class Base extends SiteController
 	 */
 	public function execute()
 	{
-		// Is component on?
-		if (!$this->config->get('component_on', 0))
-		{
-			App::redirect('/');
-			return;
-		}
-
 		// Publishing enabled?
-		$this->_publishing = Plugin::isEnabled('projects', 'publications') ? 1 : 0;
+		$this->_publishing = \Plugin::isEnabled('projects', 'publications') ? 1 : 0;
 
 		// Setup complete?
 		$this->_setupComplete = $this->config->get('confirm_step', 0) ? 3 : 2;
@@ -239,7 +232,7 @@ class Base extends SiteController
 				break;
 		}
 
-		Document::setTitle($this->title);
+		\Document::setTitle($this->title);
 
 		return $this->title;
 	}
