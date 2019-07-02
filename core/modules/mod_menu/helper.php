@@ -117,7 +117,6 @@ class Helper extends Module
 						case 'separator':
 							// No further action needed.
 							continue 2;
-							break;
 
 						case 'url':
 							if ((strpos($item->link, 'index.php?') === 0) && (strpos($item->link, 'Itemid=') === false))
